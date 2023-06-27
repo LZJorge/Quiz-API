@@ -1,0 +1,482 @@
+[
+  {
+    "question": "¿En qué año se fundó la primera Liga de Fútbol en España?",
+    "correctAnswer": "1929",
+    "options": [
+      "1929",
+      "1930",
+      "1920",
+      "1910"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2018?",
+    "correctAnswer": "Rusia",
+    "options": [
+      "Rusia",
+      "Francia",
+      "Alemania",
+      "Brasil"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Quién es el máximo goleador de la historia de la Selección Argentina de Fútbol?",
+    "correctAnswer": "Lionel Messi",
+    "options": [
+      "Lionel Messi",
+      "Diego Maradona",
+      "Gabriel Batistuta",
+      "Javier Zanetti"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Qué jugador de fútbol ha ganado más Balones de Oro en la historia?",
+    "correctAnswer": "Lionel Messi",
+    "options": [
+      "Lionel Messi",
+      "Cristiano Ronaldo",
+      "Johan Cruyff",
+      "Marco van Basten"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En qué país se fundó el Club Atlético Boca Juniors?",
+    "correctAnswer": "Argentina",
+    "options": [
+      "Argentina",
+      "Brasil",
+      "Uruguay",
+      "Chile"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el apodo de la Selección de Fútbol de Brasil?",
+    "correctAnswer": "La Canarinha",
+    "options": [
+      "La Canarinha",
+      "Los Gauchos",
+      "Los Albicelestes",
+      "Los Cafeteros"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Quién es el entrenador con más títulos de la Copa Libertadores de América?",
+    "correctAnswer": "Marcelo Gallardo",
+    "options": [
+      "Marcelo Gallardo",
+      "Carlos Bianchi",
+      "Guillermo Barros Schelotto",
+      "Alex Ferguson"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Liga de Campeones de la UEFA?",
+    "correctAnswer": "Cristiano Ronaldo",
+    "options": [
+      "Cristiano Ronaldo",
+      "Lionel Messi",
+      "Raúl González",
+      "Robert Lewandowski"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En qué país se encuentra el Estadio Azteca, uno de los estadios más famosos del mundo?",
+    "correctAnswer": "México",
+    "options": [
+      "México",
+      "Colombia",
+      "Perú",
+      "Brasil"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el club de fútbol más antiguo de España?",
+    "correctAnswer": "Recreativo de Huelva",
+    "options": [
+      "Recreativo de Huelva",
+      "Real Madrid",
+      "Barcelona",
+      "Athletic Club"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿Qué jugador de fútbol ha ganado más Copas del Mundo en la historia?",
+    "correctAnswer": "Pelé",
+    "options": [
+      "Pelé",
+      "Diego Maradona",
+      "Cristiano Ronaldo",
+      "Lionel Messi"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En quéaño se fundó la Liga de Fútbol Profesional de Estados Unidos (MLS)?",
+    "correctAnswer": "1993",
+    "options": [
+      "1993",
+      "1985",
+      "2001",
+      "1998"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga de Campeones de la UEFA?",
+    "correctAnswer": "Real Madrid",
+    "options": [
+      "Real Madrid",
+      "Barcelona",
+      "Bayern Munich",
+      "Milan"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se encuentra el Estadio Maracaná, uno de los estadios más famosos del mundo?",
+    "correctAnswer": "Brasil",
+    "options": [
+      "Brasil",
+      "Argentina",
+      "Uruguay",
+      "Chile"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Selección de Fútbol de Brasil?",
+    "correctAnswer": "Pelé",
+    "options": [
+      "Pelé",
+      "Romário",
+      "Ronaldo",
+      "Neymar"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2014?",
+    "correctAnswer": "Brasil",
+    "options": [
+      "Brasil",
+      "Alemania",
+      "Argentina",
+      "Francia"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga de Fútbol Profesional de España?",
+    "correctAnswer": "Real Madrid",
+    "options": [
+      "Real Madrid",
+      "Barcelona",
+      "Atlético de Madrid",
+      "Valencia"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿Quién es el entrenador con más títulos de la Liga de Fútbol Profesional de España?",
+    "correctAnswer": "Miguel Muñoz",
+    "options": [
+      "Pep Guardiola",
+      "Henrique Fernández",
+      "Miguel Muñoz",
+      "Diego Simeone"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se fundó el Club Atlético River Plate?",
+    "correctAnswer": "Argentina",
+    "options": [
+      "Argentina",
+      "Brasil",
+      "Uruguay",
+      "Chile"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Liga de Fútbol Profesional de España?",
+    "correctAnswer": "Lionel Messi",
+    "options": [
+      "Lionel Messi",
+      "Cristiano Ronaldo",
+      "Telmo Zarra",
+      "Hugo Sánchez"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el apodo de la Selección de Fútbol de México?",
+    "correctAnswer": "El Tri",
+    "options": [
+      "El Tri",
+      "Los Ticos",
+      "La Albiceleste",
+      "La Furia Roja"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el equipo de fútbol más antiguo de Italia?",
+    "correctAnswer": "Genoa CFC",
+    "options": [
+      "Genoa CFC",
+      "Juventus FC",
+      "AC Milan",
+      "Inter Milan"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se fundó el Club Atlético Peñarol?",
+    "correctAnswer": "Uruguay",
+    "options": [
+      "Uruguay",
+      "Argentina",
+      "Brasil",
+      "Chile"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Selección de Fútbol de Alemania?",
+    "correctAnswer": "Miroslav Klose",
+    "options": [
+      "Miroslav Klose",
+      "Gerd Müller",
+      "Michael Ballack",
+      "Franz Beckenbauer"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2006?",
+    "correctAnswer": "Alemania",
+    "options": [
+      "Alemania",
+      "Italia",
+      "Francia",
+      "Brasil"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Selección de Fútbol de España?",
+    "correctAnswer": "David Villa",
+    "options": [
+      "David Villa",
+      "Fernando Torres",
+      "Raúl González",
+      "David Silva"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En qué país se encuentra el Estadio Monumental, uno de los estadios más grandes de América Latina?",
+    "correctAnswer": "Argentina",
+    "options": [
+      "Argentina",
+      "Brasil",
+      "México",
+      "Colombia"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Liga MX de México?",
+    "correctAnswer": "Evanivaldo Castro",
+    "options": [
+      "Evanivaldo Castro",
+      "Jared Borgetti",
+      "Hugo Sánchez",
+      "Carlos Hermosillo"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se celebró la Copa América en 2019?",
+    "correctAnswer": "Brasil",
+    "options": [
+      "Brasil",
+      "Argentina",
+      "Chile",
+      "Perú"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga MX de México?",
+    "correctAnswer": "Club América",
+    "options": [
+      "Club América",
+      "Chivas de Guadalajara",
+      "Pumas UNAM",
+      "Cruz Azul"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se fundó el Club Atlético Independiente?",
+    "correctAnswer": "Argentina",
+    "options": [
+      "Argentina",
+      "Uruguay",
+      "Brasil",
+      "Chile"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Copa Mundial de la FIFA?",
+    "correctAnswer": "Marta Vieira da Silva",
+    "options": [
+      "Marta Vieira da Silva",
+      "Cristiano Ronaldo",
+      "Pelé",
+      "Miroslav Klose"
+    ],
+    "points":15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿En qué país se fundó el Club Universidad Nacional, también conocido como Pumas UNAM?",
+    "correctAnswer": "México",
+    "options": [
+      "México",
+      "Argentina",
+      "Brasil",
+      "Chile"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el equipo de fútbol con más títulos de la Copa Libertadores de América?",
+    "correctAnswer": "Club Atlético Independiente",
+    "options": [
+      "Club Atlético Independiente",
+      "Boca Juniors",
+      "River Plate",
+      "São Paulo FC"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se encuentra el Estadio Azteca, uno de los estadios más grandes del mundo?",
+    "correctAnswer": "México",
+    "options": [
+      "México",
+      "Estados Unidos",
+      "Brasil",
+      "Argentina"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia del Club Atlético Boca Juniors?",
+    "correctAnswer": "Martín Palermo",
+    "options": [
+      "Martín Palermo",
+      "Juan Román Riquelme",
+      "Diego Maradona",
+      "Carlos Tevez"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2014?",
+    "correctAnswer": "Brasil",
+    "options": [
+      "Brasil",
+      "Alemania",
+      "Sudáfrica",
+      "Rusia"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  },
+  {
+    "question": "¿Cuál es el equipo de fútbol con más títulos de la Copa del Rey de España?",
+    "correctAnswer": "FC Barcelona",
+    "options": [
+      "FC Barcelona",
+      "Real Madrid",
+      "Atlético de Madrid",
+      "Athletic Club"
+    ],
+    "points": 20,
+    "difficulty": "Difícil"
+  },
+  {
+    "question": "¿En qué país se fundó el Club Atlético River Plate?",
+    "correctAnswer": "Argentina",
+    "options": [
+      "Argentina",
+      "Uruguay",
+      "Brasil",
+      "Chile"
+    ],
+    "points": 10,
+    "difficulty": "Fácil"
+  },
+  {
+    "question": "¿Cuál es el jugador de fútbol con más goles en la historia del FC Barcelona?",
+    "correctAnswer": "Lionel Messi",
+    "options": [
+      "Lionel Messi",
+      "César Rodríguez",
+      "László Kubala",
+      "Samuel Eto'o"
+    ],
+    "points": 15,
+    "difficulty": "Moderado"
+  }
+]

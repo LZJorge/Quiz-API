@@ -1,0 +1,22 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {  
+      "quotes": ["warn", "single"],
+      "semi": ["error", "never"],
+      "curly": "error",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-empty-function": "error",
+      "@typescript-eslint/no-var-requires": "error",
+      "@typescript-eslint/ban-ts-comment": "error",
+      "@typescript-eslint/no-explicit-any": "off"
+    }
+}
