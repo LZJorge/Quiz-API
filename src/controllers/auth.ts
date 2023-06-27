@@ -14,7 +14,7 @@ class AuthController {
      * Login
      * POST '/auth/login'
      */
-    public static authenticateUser (req: Request | Request, res: Response): void {
+    public static authenticateUser (req: Request, res: Response): void {
         passport.authenticate('local', (err: Error, user: User, info: object): void => {
             if (err) {
                 res.status(500).send('Ha ocurrido un error')

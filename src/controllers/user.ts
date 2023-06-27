@@ -38,10 +38,10 @@ class UserController {
 				code: 'success',
 				message: 'Usuario creado satisfactoriamente'
 			})
-		} catch (error) {
+		} catch (error: any) {
 			res.status(500).json({
 				code: 'error',
-				message: error
+				message: error.message
 			})
 		}
 	}
@@ -62,7 +62,9 @@ class UserController {
 					}
 				})
 		
-				res.status(200).send('El usuario ha sido eliminado')
+				req.session.destroy(() => {
+					res.status(200).send('El usuario ha sido eliminado')
+				})
 			} else {
 				res.status(403).send('No tienes permiso para eliminar este usuario')
 			}
