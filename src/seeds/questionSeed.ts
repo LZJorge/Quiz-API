@@ -1,15 +1,12 @@
 import Question from '../models/Question'
 import questions from './questions.json'
-import { validateQuestion } from '../validators/questionValidator'
+import { QuestionValidationError, validateQuestion } from '../validators/questionValidator'
 
 export async function loadData(): Promise<void> {
     for (const questionData of questions) {
-        const errors: string[] = validateQuestion(questionData) 
-
-        if(errors.length > 0) {
-            console.log('Los datos de entrada no son válidos:', errors)
-            continue
-        } else {
+        try {
+            validateQuestion(questionData)
+            
             const { question, correctAnswer, options, points, difficulty } = questionData
 
             const questionRecord = Question.build({
@@ -21,6 +18,11 @@ export async function loadData(): Promise<void> {
             })
 
             await questionRecord.save()
+        } catch(error) {
+            if(error instanceof QuestionValidationError) {
+                console.log(error.name)
+                console.log(error.message)
+            }
         }
     }
 }

@@ -6,36 +6,43 @@
 
 import { IQuestion } from '../definitions'
 
-export function validateQuestion (questionData: IQuestion) {
-    const errors: string[] = []
+export class QuestionValidationError extends Error {
+    constructor(message: string) {
+        super(message)
+        this.name = 'Question Validation Error'
+    }
+}
+
+export const validateQuestion = (questionData: IQuestion) => {
 
     const validateQuestionText = (questionText: string) => {
         if (!questionText || questionText.trim() === '') {
-            errors.push('La pregunta es requerida')
+            throw new QuestionValidationError('La pregunta es requerida')
         }
     }
 
     const validateCorrectAnswer = (correctAnswer: string) => {
         if (!correctAnswer || correctAnswer.trim() === '') {
-            errors.push('La respuesta correcta es requerida')
+            throw new QuestionValidationError('La respuesta correcta es requerida')
         }
     }
 
     const validateOptions = (options: string[]) => {
         if (!Array.isArray(options) || options.length !== 4) {
-            errors.push('Las opciones deben ser un array con longitud 4')
+            throw new QuestionValidationError('Las opciones deben ser un array de 4 cadenas')
+        } else {
         }
     }
 
     const validatePoints = (points: number) => {
         if (!Number.isInteger(points) || points < 10 || points > 20) {
-            errors.push('Los puntos deben ser un número entero entre 10 y 20')
+            throw new QuestionValidationError('La puntuacion debe ser de 10, 15 o 20')
         }
     }
 
     const validateDifficulty = (difficulty: string) => {
         if (!['Fácil', 'Moderado', 'Difícil'].includes(difficulty)) {
-            errors.push('La dificultad debe ser "Fácil", "Moderado" o "Difícil"')
+            throw new QuestionValidationError('La dificultad debe ser "Fácil", "Moderado" o "Difícil"')
         }
     }
 
@@ -43,7 +50,5 @@ export function validateQuestion (questionData: IQuestion) {
     validateCorrectAnswer(questionData.correctAnswer)
     validateOptions(questionData.options)
     validatePoints(questionData.points)
-    validateDifficulty(questionData.difficulty)
-  
-    return errors
+    validateDifficulty(questionData.difficulty)  
 }
