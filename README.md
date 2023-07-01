@@ -11,7 +11,7 @@
 * [Usage Examples](#usage-examples)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Important information](#important-information)
+* [Important Information](#important-information)
 * [Contact](#contact)
 
 ## General Information
@@ -68,7 +68,7 @@ Below is a table of the available endpoints in this API.
 | GET    | /user/logout     | Destroys current session                    | N/A                                     |
 
 
-## Usage examples
+## Usage Examples
 
 #### Creating user
 ```json
