@@ -39,7 +39,7 @@ class UserController {
 				message: 'Usuario creado satisfactoriamente'
 			})
 		} catch (error: any) {
-			res.status(500).json({
+			res.status(300).json({
 				code: 'error',
 				message: error.message
 			})
@@ -70,6 +70,31 @@ class UserController {
 			}
 		} catch (error) {
 			res.status(404).send(error)
+		}
+	}
+
+	/**
+	 * Get current user
+	 * GET '/user/getCurrentUser'
+	 */
+	public static getCurrentUser(req: IUserRequest, res: Response): void {
+		try {
+			const user = {
+				id: req.user.id,
+				username: req.user.username,
+				score: req.user.score,
+				createdAt: req.user.createdAt
+			}
+
+			res.status(200).json({
+				code: 'success',
+				user: user
+			})
+		} catch(err) {
+			res.status(500).json({
+				code: 'error',
+				message: 'Ha ocurrido un error'
+			})
 		}
 	}
 }

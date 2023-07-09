@@ -9,6 +9,19 @@ import User from '../models/User'
 
 export type difficulty = 'Fácil' | 'Moderado' | 'Difícil'
 
+export interface IUser {
+    id: string
+    username: string
+    password: string
+    score: number
+    actualQuestion: number
+
+    verifyPassword: (password: string) => Promise<boolean>
+
+    createdAt: Date
+    updatedAt: Date
+}
+
 export interface IUserRequest extends Request {
     user?: User | any
 }

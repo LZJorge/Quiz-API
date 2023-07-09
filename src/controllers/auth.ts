@@ -17,13 +17,16 @@ class AuthController {
     public static authenticateUser (req: Request, res: Response): void {
         passport.authenticate('local', (err: Error, user: User, info: object): void => {
             if (err) {
-                res.status(500).send('Ha ocurrido un error')
+                res.status(500).json('Ha ocurrido un error')
             } else if (!user) {
-                res.status(401).send('Usuario o contraseña incorrectos')
+                res.status(401).json({
+                	code: 'error',
+                	message: 'Usuario o contraseña incorrectos'
+            	})
             } else {
                 req.login(user, (err: Error) => {
                     if (err) {
-                        res.status(500).json(err)
+                        res.status(400).json(err)
                     } else {
                         res.status(200).json(info)
                     }
@@ -39,7 +42,10 @@ class AuthController {
     public static logout (req: Request, res: Response): void {
         if(req.session) {
             req.session.destroy(()=> {
-                res.status(200).send('Se cerró la sesión')
+                res.status(200).send({
+                	code: 'success',
+                	message: 'Se cerró la sesión'
+                })
             })
         } else {
             res.status(400).json({
@@ -58,7 +64,7 @@ class AuthController {
             return next()
         }
 
-        res.status(400).json({
+        res.json({
             code: 'error',
             message: 'Tienes que estar autenticado'
         })

@@ -34,6 +34,11 @@ class Router {
 			UserController.deleteUser
 		)
 
+		this.router.get('/user/getCurrentUser',
+			AuthController.isAuthenticated,
+			UserController.getCurrentUser
+		)
+
 		this.router.get('/user/logout', 
 			AuthController.isAuthenticated,
 			AuthController.logout

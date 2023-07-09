@@ -13,7 +13,7 @@ class User extends Model {
 	public username!: string
 	public password!: string
 	public score!: number
-	public actualQuestion!: number
+	public activeQuestion!: number
 
 	declare public verifyPassword: (password: string) => Promise<boolean>
 
@@ -55,7 +55,7 @@ User.init({
 		defaultValue: 0,
 	},
 
-	actualQuestion: {
+	activeQuestion: {
 		type: DataTypes.INTEGER,
 		defaultValue: 0,
 	},

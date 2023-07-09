@@ -7,6 +7,7 @@
 import passport from 'passport'
 import User from '../models/User'
 import { Strategy as LocalStrategy } from 'passport-local'
+import { IUser } from '../definitions'
 
 passport.use(
     new LocalStrategy(
@@ -49,12 +50,17 @@ passport.use(
     )
 )
 
-passport.serializeUser((user, callback) => {
-    callback(null, user)
+passport.serializeUser((user: User | any, callback) => {
+    callback(null, user.id)
 })
 
-passport.deserializeUser((user: string, callback) => {
-    callback(null, user)
+passport.deserializeUser( async (id: string, callback) => {
+    try {
+        const user = await User.findByPk(id);
+        callback(null, user);
+    } catch (error) {
+        callback(error);
+    }
 })
 
 export default passport

@@ -14,7 +14,11 @@ import sequelize from './config/db'
 import User from './models/User'
 import Question from './models/Question'
 import session from 'express-session'
+import cookieParser from 'cookie-parser'
 import passport from './config/passport'
+import SQLiteStoreFactory from 'connect-sqlite3'
+
+const SQLiteStore = SQLiteStoreFactory(session)
 
 config()
 
@@ -34,17 +38,40 @@ class App {
 	private setMiddlewares(): void {
 		const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' })
 
-		this.app.use(cors())
 		this.app.use(morgan('common', { stream: accessLogStream }))
 		this.app.use(Express.urlencoded({
 			extended: true
 		}))
 		this.app.use(Express.json())
+		this.app.use(cookieParser())
+
+		this.app.use( (req, res, next) => {
+			res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // update to match the domain you will make the request from
+			res.header(
+				"Access-Control-Allow-Headers",
+				"Origin, X-Requested-With, Content-Type, Accept"
+			)
+			res.header("Access-Control-Allow-Credentials", "true")
+			next()
+		})
 
 		this.app.use(session({
 			secret: 'keyboard cat',
-			resave: false,
-			saveUninitialized: false,
+			resave: true,
+			saveUninitialized: true,
+			store: new SQLiteStore({ db: './db.sqlite3' }) as any,
+			cookie: {
+				sameSite: false,
+				httpOnly: true,
+				secure: false,
+				maxAge: 1000 * 60 * 60 * 24,
+			}
+		}))
+
+		this.app.use(cors({
+			origin: 'http://localhost:5173',
+			methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+			credentials: true
 		}))
 		
 		this.app.use(passport.initialize())

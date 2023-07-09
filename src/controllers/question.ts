@@ -18,41 +18,62 @@ class QuestionController {
      */
     public static async getQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const questionsCount = await Question.count()
-        const randomID = Math.floor(Math.random() * (questionsCount) + 1)
         
-        const question = await Question.findOne({
-            where: {
-                id: randomID
-            },
-            attributes: [
-                'id', 
-                'question', 
-                'correctAnswer', 
-                'options', 
-                'points', 
-                'difficulty'
-            ]
-        })
-
-        if(question) {
-            await User.update({
-                actualQuestion: question.id
-            }, {
+        if(req.user.activeQuestion != 0) {
+            const question = await Question.findOne({
                 where: {
-                    id: req.user.id
-                }
+                    id: req.user.activeQuestion
+                },
+                attributes: [
+                    'id', 
+                    'question', 
+                    'correctAnswer', 
+                    'options', 
+                    'points', 
+                    'difficulty'
+                ]
             })
 
-            req.user.actualQuestion = question.id
+            res.status(200).json(question)
+        } else {
+            const randomID = Math.floor(Math.random() * (questionsCount) + 1)
 
-            req.login(req.user, (error) => {
-                if(error) {
-                    next(error)
-                } else {
-                    res.status(200).json(question)
-                }
+            const question = await Question.findOne({
+                where: {
+                    id: randomID
+                },
+                attributes: [
+                    'id', 
+                    'question', 
+                    'correctAnswer', 
+                    'options', 
+                    'points', 
+                    'difficulty'
+                ]
             })
+    
+            if(question) {
+                await User.update({
+                    activeQuestion: question.id
+                }, {
+                    where: {
+                        id: req.user.id
+                    }
+                })
+    
+                req.user.activeQuestion = question.id
+    
+                req.login(req.user, (error) => {
+                    if(error) {
+                        next(error)
+                    } else {
+                        res.status(200).json(question)
+                    }
+                })
+            }
         }
+
+        
     }
 
     /**
@@ -61,7 +82,7 @@ class QuestionController {
      */
     public static async sendAnswer(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const { answer } = req.body
-        const questionID = req.user.actualQuestion
+        const questionID = req.user.activeQuestion
 
         if(questionID == 0) {
             res.status(400).json({
@@ -82,14 +103,14 @@ class QuestionController {
         })
 
         await User.update({
-            actualQuestion: 0
+            activeQuestion: 0
         }, {
             where: {
                 id: req.user.id
             }
         })
 
-        req.user.actualQuestion = 0
+        req.user.activeQuestion = 0
 
         if (question) {
             if (answer == question.correctAnswer) {
