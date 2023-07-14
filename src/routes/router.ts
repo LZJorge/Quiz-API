@@ -39,6 +39,11 @@ class Router {
 			UserController.getCurrentUser
 		)
 
+		this.router.get('/user/getLeaderboard',
+			AuthController.isAuthenticated,	
+			UserController.getLeaderboard
+		)
+
 		this.router.get('/user/logout', 
 			AuthController.isAuthenticated,
 			AuthController.logout
@@ -51,10 +56,10 @@ class Router {
 			QuestionController.getQuestion
 		)
 		
-		this.router.put('/question', 
-			AuthController.isAuthenticated,
-			QuestionController.sendAnswer
-		)
+		this.router.route('/question')
+			.patch(AuthController.isAuthenticated, QuestionController.sendAnswer)
+			.post(AuthController.isAuthenticated, QuestionController.sendAnswer)
+			.put(AuthController.isAuthenticated, QuestionController.sendAnswer)
 	}
 
 	public getRoutes (): ExpressRouter {

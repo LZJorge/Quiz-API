@@ -41,13 +41,16 @@ To set up the local environment, follow these instructions in order:
 # 1. Clone the repository from GitHub
 git clone https://github.com/LZJorge/Quiz-API.git
 
-# 2. Install dependencies
+# 2. Enter to generated folder
+cd Quiz-API
+
+# 3. Install dependencies
 npm install
 
-# 3. Compile TypeScript code
+# 4. Compile TypeScript code
 npm run build
 
-# 4. Start the server
+# 5. Start the server
 npm start
 ```
 
@@ -61,11 +64,13 @@ Below is a table of the available endpoints in this API.
 | Method | URL              | Description                                | Request body                            |
 | ------ | ---------------- | ------------------------------------------ | --------------------------------------- |
 | GET    | /question        | Gives a random question (active a question) | N/A                                     |
-| PUT    | /question        | Send answer (to user active question)       | `answer`                                |
+| POST, PUT, PATCH    | /question        | Send answer (to user active question)       | `answer`                                |
+| POST   | /auth/login      | Authenticate user                          | `username`, `password`                  |
 | POST   | /user/create     | Register user                              | `username`, `password`, `passwordConfirm` |
 | DELETE | /user/delete     | Deletes user                               | `userID`                               |
-| POST   | /auth/login      | Authenticate user                          | `username`, `password`                  |
-| GET    | /user/logout     | Destroys current session                    | N/A                                     |
+| GET    | /user/getLeaderboard     | Gives 10 user with highest score                   | N/A  |
+| GET    | /user/getCurrentUser     | Gives user session data                   | N/A  |
+| GET    | /user/logout     | Destroys current session                    | N/A  |                 
 
 
 ## Usage Examples
@@ -93,8 +98,8 @@ content-type: application/json
 }
 ```
 
-## Project Status
 > Beta
+## Project Status
 
 
 ## Room for Improvement

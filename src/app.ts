@@ -9,6 +9,7 @@ import { config } from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
 import fs from 'fs'
+import path from 'path'
 import Router from './routes/router'
 import sequelize from './config/db'
 import User from './models/User'
@@ -45,8 +46,10 @@ class App {
 		this.app.use(Express.json())
 		this.app.use(cookieParser())
 
+		this.app.use(Express.static(path.join(__dirname, '../public')))
+
 		this.app.use( (req, res, next) => {
-			res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // update to match the domain you will make the request from
+			res.header("Access-Control-Allow-Origin", "http://localhost:5173")
 			res.header(
 				"Access-Control-Allow-Headers",
 				"Origin, X-Requested-With, Content-Type, Accept"

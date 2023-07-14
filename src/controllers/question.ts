@@ -14,24 +14,25 @@ class QuestionController {
 
     /**
      * Get Question
-     * GET '/question'
+     * GET @url '/question'
      */
     public static async getQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const questionsCount = await Question.count()
-        
+        const questionAttributes = [
+            'id', 
+            'question', 
+            'correctAnswer', 
+            'options', 
+            'points', 
+            'difficulty'
+        ]
+
         if(req.user.activeQuestion != 0) {
             const question = await Question.findOne({
                 where: {
                     id: req.user.activeQuestion
                 },
-                attributes: [
-                    'id', 
-                    'question', 
-                    'correctAnswer', 
-                    'options', 
-                    'points', 
-                    'difficulty'
-                ]
+                attributes: questionAttributes
             })
 
             res.status(200).json(question)
@@ -42,18 +43,12 @@ class QuestionController {
                 where: {
                     id: randomID
                 },
-                attributes: [
-                    'id', 
-                    'question', 
-                    'correctAnswer', 
-                    'options', 
-                    'points', 
-                    'difficulty'
-                ]
+                attributes: questionAttributes
             })
     
             if(question) {
                 await User.update({
+                    totalQuestions: Sequelize.literal(`totalQuestions + 1`),
                     activeQuestion: question.id
                 }, {
                     where: {
@@ -62,6 +57,7 @@ class QuestionController {
                 })
     
                 req.user.activeQuestion = question.id
+                req.user.totalQuestions = req.user.totalQuestions + 1
     
                 req.login(req.user, (error) => {
                     if(error) {
@@ -78,7 +74,7 @@ class QuestionController {
 
     /**
      * Send Answer
-     * POST '/question'
+     * POST, PUT, PATCH @url '/question'
      */
     public static async sendAnswer(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const { answer } = req.body
@@ -102,19 +98,13 @@ class QuestionController {
             ]
         })
 
-        await User.update({
-            activeQuestion: 0
-        }, {
-            where: {
-                id: req.user.id
-            }
-        })
-
         req.user.activeQuestion = 0
 
         if (question) {
-            if (answer == question.correctAnswer) {
+            if (answer === question.correctAnswer) {
                 await User.update({
+                    successResponses: Sequelize.literal(`successResponses + 1`),
+                    activeQuestion: 0,
                     score: Sequelize.literal(`score + ${question.points}`)
                 }, {
                     where: {
@@ -123,6 +113,7 @@ class QuestionController {
                 })
 
                 req.user.score += question.points
+                req.user.successResponses = req.user.successResponses + 1
 
                 req.login(req.user, (error) => {
                     if (error) {
@@ -136,6 +127,7 @@ class QuestionController {
                 })
             } else {
                 await User.update({
+                    activeQuestion: 0,
                     score: Sequelize.literal(
                         `CASE 
                             WHEN score >= 10 THEN score - 10

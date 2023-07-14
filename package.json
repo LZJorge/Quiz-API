@@ -1,6 +1,6 @@
 {
   "name": "ts-express-quiz-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Quiz game API with Typescript, Express",
   "main": "build/index.js",
   "private": true,
@@ -33,7 +33,6 @@
     "@types/node": "^20.2.5",
     "@types/passport": "^1.0.12",
     "@types/passport-local": "^1.0.35",
-    "@types/redis": "^4.0.11",
     "@types/sequelize": "^4.28.15",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
@@ -43,7 +42,6 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "connect-redis": "^7.1.0",
     "connect-sqlite3": "^0.9.13",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -54,7 +52,6 @@
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "redis": "^4.6.7",
     "sequelize": "^6.32.0",
     "sqlite3": "^5.1.6"
   },

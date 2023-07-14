@@ -4,16 +4,20 @@
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
 
-import { Model, DataTypes } from 'sequelize'
+import { Model, DataTypes, InferAttributes } from 'sequelize'
 import sequelize from '../config/db'
 import bcrypt from 'bcrypt'
+import { IUser } from '../definitions'
 
 class User extends Model {
 	public id!: string
 	public username!: string
+	public profileImgUrl!: string
 	public password!: string
 	public score!: number
 	public activeQuestion!: number
+	public totalQuestions!: number
+	public successResponses!: number
 
 	declare public verifyPassword: (password: string) => Promise<boolean>
 
@@ -42,6 +46,11 @@ User.init({
 		}
 	},
 
+	profileImgUrl: {
+		type: DataTypes.STRING,
+		defaultValue: '/avatars/041-man.svg'
+	},
+
 	password: {
 		type: DataTypes.STRING,
 		allowNull: false,
@@ -57,6 +66,18 @@ User.init({
 
 	activeQuestion: {
 		type: DataTypes.INTEGER,
+		defaultValue: 0,
+	},
+
+	totalQuestions: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		defaultValue: 0,
+	},
+	
+	successResponses: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
 		defaultValue: 0,
 	},
 

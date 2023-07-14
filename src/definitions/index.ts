@@ -12,9 +12,12 @@ export type difficulty = 'Fácil' | 'Moderado' | 'Difícil'
 export interface IUser {
     id: string
     username: string
+    profileImgUrl: string
     password: string
     score: number
-    actualQuestion: number
+    activeQuestion: number
+    totalQuestions: number
+    successResponses: number
 
     verifyPassword: (password: string) => Promise<boolean>
 
@@ -23,7 +26,7 @@ export interface IUser {
 }
 
 export interface IUserRequest extends Request {
-    user?: User | any
+    user?: IUser | any
 }
 
 export interface IQuestion {

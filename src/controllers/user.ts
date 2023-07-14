@@ -12,7 +12,7 @@ class UserController {
 
 	/**
 	 * Create User
-	 * POST '/user/create'
+	 * POST @url '/user/create'
 	 */
 	public static async createUser (req: Request, res: Response): Promise<void> {
 		const { username, password } = req.body
@@ -48,7 +48,7 @@ class UserController {
 
 	/**
 	 * Delete User
-	 * DELETE '/user/delete'
+	 * DELETE @url '/user/delete'
 	 */
 	public static async deleteUser(req: IUserRequest, res: Response): Promise<void> {
 		const { userID } = req.body
@@ -75,14 +75,17 @@ class UserController {
 
 	/**
 	 * Get current user
-	 * GET '/user/getCurrentUser'
+	 * GET @url '/user/getCurrentUser'
 	 */
 	public static getCurrentUser(req: IUserRequest, res: Response): void {
 		try {
 			const user = {
 				id: req.user.id,
 				username: req.user.username,
+				profileImgUrl: req.user.profileImgUrl,
 				score: req.user.score,
+				totalQuestions: req.user.totalQuestions,
+				successResponses: req.user.successResponses,
 				createdAt: req.user.createdAt
 			}
 
@@ -94,6 +97,33 @@ class UserController {
 			res.status(500).json({
 				code: 'error',
 				message: 'Ha ocurrido un error'
+			})
+		}
+	}
+
+	/**
+	 * Get User Leaderboard *10 highest score*
+	 * GET @url '/user/getLeaderboard'
+	 */
+	public static async getLeaderboard (req: Request, res: Response): Promise<void> {
+		try {
+			const leaderboard = await User.findAll({
+				order: [["score", "DESC"]],
+				limit: 10,
+				attributes: [
+					'username',
+					'profileImgUrl',
+					'score',
+					'successResponses',
+					'createdAt'
+				]
+			})
+
+			res.status(200).json(leaderboard)
+		} catch(error: any) {
+			res.json({
+				code: 'error',
+				message: error.message
 			})
 		}
 	}
