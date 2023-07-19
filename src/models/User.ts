@@ -4,15 +4,14 @@
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
 
-import { Model, DataTypes, InferAttributes } from 'sequelize'
+import { Model, DataTypes } from 'sequelize'
 import sequelize from '../config/db'
 import bcrypt from 'bcrypt'
-import { IUser } from '../definitions'
 
 class User extends Model {
 	public id!: string
 	public username!: string
-	public profileImgUrl!: string
+	public avatar!: string
 	public password!: string
 	public score!: number
 	public activeQuestion!: number
@@ -46,9 +45,9 @@ User.init({
 		}
 	},
 
-	profileImgUrl: {
+	avatar: {
 		type: DataTypes.STRING,
-		defaultValue: '/avatars/041-man.svg'
+		defaultValue: 'avatars/avatar-38.svg'
 	},
 
 	password: {
@@ -87,14 +86,16 @@ User.init({
 	tableName: 'users',
 	sequelize,
 	hooks: {
-		beforeSave: (user) => {
-			user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10))
+		beforeSave: async (user) => {
+			if(user.changed('password')) {
+				user.password = await bcrypt.hash(user.password, 10)
+			}
 		}
 	}
 })
 
 User.prototype.verifyPassword = async function(password) {
-    return bcrypt.compareSync(password, this.password)
+    return await bcrypt.compare(password, this.password)
 }
 
 export default User

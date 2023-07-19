@@ -7,6 +7,7 @@
 import { Request, Response } from 'express'
 import User from '../models/User'
 import { IUserRequest } from '../definitions'
+import bcrypt from 'bcrypt'
 
 class UserController {
 
@@ -47,6 +48,64 @@ class UserController {
 	}
 
 	/**
+	 * Updates User Password
+	 * PUT, PATCH @url '/user/update/password'
+	 */
+	public static async updateUserPassword(req: IUserRequest, res: Response): Promise<void> {
+		const { newPassword } = req.body
+		const { id } = req.user
+
+		try {
+			const user = await User.findByPk(id)
+
+			if(user) {
+				await user.update({
+					password: newPassword,
+				})
+			}
+
+			res.status(200).json({
+				code: 'success',
+				message: 'Contraseña actualizada'
+			})
+		} catch(error: any) {
+			res.json({
+				code: 'error',
+				message: error.message
+			})
+		}
+	}
+
+	/**
+	 * Update User Avatar
+	 * PUT, PATCH @url '/user/update/avatar'
+	 */
+	public static async updateUserAvatar(req: IUserRequest, res: Response): Promise<void> {
+		const { newAvatar } = req.body
+		const { id } = req.user
+
+		try {
+			const user = await User.findByPk(id)
+
+			if(user) {
+				await user.update({
+					avatar: newAvatar
+				})
+			}
+
+			res.status(200).json({
+				code: 'success',
+				message: 'Se actualizó el avatar'
+			})
+		} catch(error: any) {
+			res.status(400).json({
+				code: 'error',
+				message: error.message
+			})
+		}
+	}
+
+	/**
 	 * Delete User
 	 * DELETE @url '/user/delete'
 	 */
@@ -63,7 +122,10 @@ class UserController {
 				})
 		
 				req.session.destroy(() => {
-					res.status(200).send('El usuario ha sido eliminado')
+					res.status(200).json({
+						code: 'success',
+						message: 'El usuario ha sido eliminado'
+					})
 				})
 			} else {
 				res.status(403).send('No tienes permiso para eliminar este usuario')
@@ -75,14 +137,14 @@ class UserController {
 
 	/**
 	 * Get current user
-	 * GET @url '/user/getCurrentUser'
+	 * GET @url '/user/current'
 	 */
 	public static getCurrentUser(req: IUserRequest, res: Response): void {
 		try {
 			const user = {
 				id: req.user.id,
 				username: req.user.username,
-				profileImgUrl: req.user.profileImgUrl,
+				avatar: req.user.avatar,
 				score: req.user.score,
 				totalQuestions: req.user.totalQuestions,
 				successResponses: req.user.successResponses,
@@ -112,7 +174,7 @@ class UserController {
 				limit: 10,
 				attributes: [
 					'username',
-					'profileImgUrl',
+					'avatar',
 					'score',
 					'successResponses',
 					'createdAt'

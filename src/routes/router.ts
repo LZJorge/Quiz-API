@@ -8,7 +8,12 @@ import { Router as ExpressRouter } from 'express'
 import UserController from '../controllers/user'
 import QuestionController from '../controllers/question'
 import AuthController from '../controllers/auth'
-import { validateCreateUser, validateDeleteUser } from '../validators/userValidator'
+import { 
+	validateCreateUser, 
+	validateUpdateUserPassword,
+	validateUserAvatar,
+	validateDeleteUser 
+} from '../validators/userValidator'
 
 class Router {
 	private readonly router: ExpressRouter
@@ -28,13 +33,37 @@ class Router {
 			UserController.createUser
 		)
 
+		this.router.route('/user/update/password')
+			.put(
+				AuthController.isAuthenticated,
+				validateUpdateUserPassword,
+				UserController.updateUserPassword
+			)
+			.patch(
+				AuthController.isAuthenticated,
+				validateUpdateUserPassword,
+				UserController.updateUserPassword
+			)
+
+		this.router.route('/user/update/avatar')
+			.put(
+				AuthController.isAuthenticated,
+				validateUserAvatar,
+				UserController.updateUserAvatar
+			)
+			.patch(
+				AuthController.isAuthenticated,
+				validateUserAvatar,
+				UserController.updateUserAvatar
+			)
+
 		this.router.delete('/user/delete', 			
 			AuthController.isAuthenticated,
 			validateDeleteUser,
 			UserController.deleteUser
 		)
 
-		this.router.get('/user/getCurrentUser',
+		this.router.get('/user/current',
 			AuthController.isAuthenticated,
 			UserController.getCurrentUser
 		)
@@ -57,9 +86,18 @@ class Router {
 		)
 		
 		this.router.route('/question')
-			.patch(AuthController.isAuthenticated, QuestionController.sendAnswer)
-			.post(AuthController.isAuthenticated, QuestionController.sendAnswer)
-			.put(AuthController.isAuthenticated, QuestionController.sendAnswer)
+			.patch(
+				AuthController.isAuthenticated, 
+				QuestionController.sendAnswer
+			)
+			.post(
+				AuthController.isAuthenticated, 
+				QuestionController.sendAnswer
+			)
+			.put(
+				AuthController.isAuthenticated, 
+				QuestionController.sendAnswer
+			)
 	}
 
 	public getRoutes (): ExpressRouter {

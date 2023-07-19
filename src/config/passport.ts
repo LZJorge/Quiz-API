@@ -56,10 +56,10 @@ passport.serializeUser((user: User | any, callback) => {
 
 passport.deserializeUser( async (id: string, callback) => {
     try {
-        const user = await User.findByPk(id);
-        callback(null, user);
+        const user = await User.findByPk(id)
+        callback(null, user)
     } catch (error) {
-        callback(error);
+        callback(error)
     }
 })
 

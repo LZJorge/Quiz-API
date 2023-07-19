@@ -2,20 +2,31 @@
 > The following is an API created for a quiz game on different topics.
 
 ## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Setup](#setup)
-* [Usage](#usage)
-* [Endpoints](#endpoints)
-* [Usage Examples](#usage-examples)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Important Information](#important-information)
-* [Contact](#contact)
+- [Quiz Game (API)](#quiz-game-api)
+  - [Table of Contents](#table-of-contents)
+  - [General Information](#general-information)
+  - [Technologies Used](#technologies-used)
+  - [Features](#features)
+  - [Setup](#setup)
+  - [Usage](#usage)
+  - [Endpoints](#endpoints)
+  - [Usage Examples](#usage-examples)
+      - [Creating user](#creating-user)
+      - [Authenticate user](#authenticate-user)
+      - [Sending answer](#sending-answer)
+  - [Example responses](#example-responses)
+      - [Get current user data](#get-current-user-data)
+      - [Get question](#get-question)
+  - [Project Status](#project-status)
+  - [Room for Improvement](#room-for-improvement)
+      - [Room for improvement:](#room-for-improvement-1)
+      - [To do:](#to-do)
+  - [Important Information](#important-information)
+  - [Contact](#contact)
+
 
 ## General Information
-> The main objective of this project is to provide users with a platform where they can have fun and learn with interesting questions and facts.
+The main objective of this project is to provide users with a platform where they can have fun and learn with interesting questions and facts.
 
 
 ## Technologies Used
@@ -67,9 +78,11 @@ Below is a table of the available endpoints in this API.
 | POST, PUT, PATCH    | /question        | Send answer (to user active question)       | `answer`                                |
 | POST   | /auth/login      | Authenticate user                          | `username`, `password`                  |
 | POST   | /user/create     | Register user                              | `username`, `password`, `passwordConfirm` |
+| PUT, PATCH   | /user/update/password     | Update User Password                              | `password`, `newPassword`, `newPasswordConfirm` |
+| PUT, PATCH   | /user/update/avatar     | Update User Avatar                              | `newAvatar`|
 | DELETE | /user/delete     | Deletes user                               | `userID`                               |
 | GET    | /user/getLeaderboard     | Gives 10 user with highest score                   | N/A  |
-| GET    | /user/getCurrentUser     | Gives user session data                   | N/A  |
+| GET    | /user/current     | Gives user session data                   | N/A  |
 | GET    | /user/logout     | Destroys current session                    | N/A  |                 
 
 
@@ -98,20 +111,63 @@ content-type: application/json
 }
 ```
 
-> Beta
+#### Sending answer
+```json
+PUT {{API}}/question
+content-type: application/json
+
+{
+    "answer": "Brasil"
+}
+```
+
+## Example responses
+
+#### Get current user data
+```json
+{
+  "code": "success",
+  "user": {
+    "id": "uuid147f-bc20-4cd4-99f9-a9ba787db693",
+    "username": "JohnDoe",
+    "avatar": "avatars/avatar-16.svg",
+    "score": 0,
+    "totalQuestions": 0,
+    "successResponses": 0,
+    "createdAt": "2023-07-19T13:29:19.925Z"
+  }
+}
+```
+
+#### Get question
+```json
+{
+  "id": 17,
+  "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga de Fútbol Profesional de España?",
+  "correctAnswer": "Real Madrid",
+  "options": [
+    "Real Madrid",
+    "Barcelona",
+    "Atlético de Madrid",
+    "Valencia"
+  ],
+  "points": 20,
+  "difficulty": "Difícil"
+}
+```
+
 ## Project Status
+> Beta
 
 
 ## Room for Improvement
 
 #### Room for improvement:
 - Improvement of documentation
-- Add endpoints to edit and delete questions
 - Add support for other database engines
 
 #### To do:
 - Categorization of questions
-- Leaderboards
 
 
 ## Important Information

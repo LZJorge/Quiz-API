@@ -5,14 +5,13 @@
  */
 
 import { Request } from 'express'
-import User from '../models/User'
 
 export type difficulty = 'Fácil' | 'Moderado' | 'Difícil'
 
 export interface IUser {
     id: string
     username: string
-    profileImgUrl: string
+    avatar: string
     password: string
     score: number
     activeQuestion: number
