@@ -47,7 +47,7 @@ User.init({
 
 	avatar: {
 		type: DataTypes.STRING,
-		defaultValue: 'avatars/avatar-38.svg'
+		defaultValue: '/avatars/avatar-00.svg'
 	},
 
 	password: {

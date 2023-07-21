@@ -65,15 +65,7 @@ export const validateUpdateUserPassword = [
         .withMessage('La contraseña es obligatoria')
         .isString()
         .isLength({ min: 8 })
-        .withMessage('La contraseña debe tener mínimo 8 caracteres')
-        .custom( async (value, { req }) => {
-            const match = await req.user.verifyPassword(value)
-            if(!match) {
-                throw new Error('Las contraseña actual es incorrecta')
-            }
-
-            return true
-        }),
+        .withMessage('La contraseña debe tener mínimo 8 caracteres'),
 
 	body('newPassword')
         .exists()
@@ -101,6 +93,16 @@ export const validateUpdateUserPassword = [
             return true
         })
         .withMessage('Las contraseñas no coinciden'),
+        
+       body('password')
+       .custom( async (value, { req }) => {
+            const match = await req.user.verifyPassword(value)
+            if(!match) {
+                throw new Error('Las contraseña actual es incorrecta')
+            }
+
+            return true
+        }),
 
     (req: Request, res: Response, next: NextFunction) => {
         handleValidationErrors(req, res, next)
@@ -112,7 +114,7 @@ export const validateUpdateUserPassword = [
  * user avatar route:
  * 'avatars/avatar-xx.svg'
  */
-const avatarRegex = /^avatars\/avatar-\d{2}\.svg$/
+const avatarRegex = /^\/avatars\/avatar-\d{2}\.svg$/
 
 export const validateUserAvatar = [
     body('newAvatar')

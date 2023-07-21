@@ -48,16 +48,6 @@ class App {
 
 		this.app.use(Express.static(path.join(__dirname, '../public')))
 
-		this.app.use( (req, res, next) => {
-			res.header("Access-Control-Allow-Origin", "http://localhost:5173")
-			res.header(
-				"Access-Control-Allow-Headers",
-				"Origin, X-Requested-With, Content-Type, Accept"
-			)
-			res.header("Access-Control-Allow-Credentials", "true")
-			next()
-		})
-
 		this.app.use(session({
 			secret: 'keyboard cat',
 			resave: true,
@@ -73,7 +63,7 @@ class App {
 
 		this.app.use(cors({
 			origin: 'http://localhost:5173',
-			methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+			methods: ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD'],
 			credentials: true
 		}))
 		

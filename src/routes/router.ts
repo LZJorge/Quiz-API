@@ -77,6 +77,11 @@ class Router {
 			AuthController.isAuthenticated,
 			AuthController.logout
 		)
+
+		this.router.get('/avatars/get',
+			AuthController.isAuthenticated,
+			UserController.getAvatars
+		)
 	}
 
 	private setQuestionRoutes (): void {

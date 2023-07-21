@@ -7,7 +7,8 @@
 import { Request, Response } from 'express'
 import User from '../models/User'
 import { IUserRequest } from '../definitions'
-import bcrypt from 'bcrypt'
+import path from 'path'
+import fs from 'fs'
 
 class UserController {
 
@@ -188,6 +189,22 @@ class UserController {
 				message: error.message
 			})
 		}
+	}
+
+	/**
+	 * Get User Avatars
+	 */
+	public static getAvatars (req: Request, res: Response): void {
+		const avatarsDir = path.join(__dirname, '../../public', 'avatars');
+
+		fs.readdir(avatarsDir, (err, files) => {
+			if (err) {
+				res.status(500).send('Error al leer la carpeta de avatares');
+			} else {
+			const avatars = files.map((file) => `/avatars/${file}`);
+				res.json(avatars);
+			}
+		})
 	}
 }
 
