@@ -7,7 +7,6 @@
 import passport from 'passport'
 import User from '../models/User'
 import { Strategy as LocalStrategy } from 'passport-local'
-import { IUser } from '../definitions'
 
 passport.use(
     new LocalStrategy(

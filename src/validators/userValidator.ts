@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { body } from 'express-validator'
 import handleValidationErrors from '../helpers/validatorsHelper'
+import User from '../models/User'
 
 const sanitizeString = (value: string) => {
     if (value.trim()[0] == '') {
@@ -24,7 +25,20 @@ export const validateCreateUser = [
         .isString()
         .isLength({ min: 3 })
         .withMessage('El usuario debe tener mínimo 3 caracteres')
-        .custom(sanitizeString),
+        .custom(sanitizeString)
+        .custom( async (value) => {
+            const userExists = await User.findOne({
+				where: {
+					username: value
+				}
+			})
+	
+			if(userExists) {
+				throw new Error('El nombre de usuario ya se encuentra en uso')
+			}
+
+            return true
+        }),
 
 	body('password')
         .exists()

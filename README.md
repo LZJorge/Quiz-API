@@ -8,6 +8,7 @@
   - [Technologies Used](#technologies-used)
   - [Features](#features)
   - [Setup](#setup)
+      - [Testing](#testing)
   - [Usage](#usage)
   - [Endpoints](#endpoints)
   - [Usage Examples](#usage-examples)
@@ -31,11 +32,11 @@ The main objective of this project is to provide users with a platform where the
 
 ## Technologies Used
 
-- TypeScript - v5.1.3
-- Express - v4.18.2
-- Sequelize - v6.32.0
-- Passport - v0.6.0
-- SQLite3 - v5.1.6
+- ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+- ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+- ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
+- ![Passport](https://img.shields.io/badge/passport-%23000000.svg?style=for-the-badge&logo=passport&logoColor=white)
+- ![SQLite3](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
 
 ## Features
@@ -65,6 +66,14 @@ npm run build
 npm start
 ```
 
+#### Testing
+> You can run api tests with
+
+```bash
+# Use this after step 4 instead of npm start to test api
+npm test
+```
+
 ## Usage
 The API is used through HTTP requests to the available endpoints.
 
@@ -83,7 +92,8 @@ Below is a table of the available endpoints in this API.
 | DELETE | /user/delete     | Deletes user                               | `userID`                               |
 | GET    | /user/getLeaderboard     | Gives 10 user with highest score                   | N/A  |
 | GET    | /user/current     | Gives user session data                   | N/A  |
-| GET    | /user/logout     | Destroys current session                    | N/A  |                 
+| GET    | /user/logout     | Destroys current session                    | N/A  |
+| GET    | /avatars/get     | Get all public avatars                   | N/A  |                   
 
 
 ## Usage Examples

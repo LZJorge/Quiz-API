@@ -14,7 +14,8 @@ class QuestionController {
 
     /**
      * Get Question
-     * GET @url '/question'
+     * @url '/question'
+     * @method GET
      */
     public static async getQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const questionsCount = await Question.count()
@@ -74,7 +75,10 @@ class QuestionController {
 
     /**
      * Send Answer
-     * POST, PUT, PATCH @url '/question'
+     * @url '/question'
+     * @method POST
+     * @method PUT
+     * @method PATCH
      */
     public static async sendAnswer(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const { answer } = req.body

@@ -12,7 +12,8 @@ class AuthController {
 
     /**
      * Login
-     * POST @url '/auth/login'
+     * @url '/auth/login'
+     * @method POST
      */
     public static authenticateUser (req: Request, res: Response): void {
         passport.authenticate('local', (err: Error, user: User, info: object): void => {
@@ -37,7 +38,8 @@ class AuthController {
 
     /**
      * Logout
-     * GET @url '/user/logout'
+     * @url '/user/logout'
+     * @method POST
      */
     public static logout (req: Request, res: Response): void {
         if(req.session) {
@@ -57,14 +59,15 @@ class AuthController {
 
     /**
      * Verify user is authenticated
-     * GET @url Any url
+     * @url Any url
+     * @method any
      */
     public static isAuthenticated (req: Request, res: Response, next: NextFunction): void {
         if(req.isAuthenticated()) {
             return next()
         }
 
-        res.json({
+        res.status(401).json({
             code: 'error',
             message: 'Tienes que estar autenticado'
         })

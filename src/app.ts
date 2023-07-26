@@ -28,6 +28,8 @@ class App {
 	private readonly port: number | string = process.env.PORT || 8000
 	private readonly router: Router
 
+	private server: any
+
 	constructor() {
 		this.app = Express()
 		this.router = new Router()
@@ -83,11 +85,19 @@ class App {
 
 	public async startServer(): Promise<void> {
 		await this.setDatabases()
-		await this.app.listen(this.port)
+		this.server = await this.app.listen(this.port)
 
 		console.log(`\n🚀 Server running on http://localhost:${this.port} in ${process.env.NODE_ENV} mode 🚀`)
 		console.log(`📅 Started at ${new Date()}`)
 		console.log(`\n🛑 Press CTRL-C to stop\n`)
+	}
+
+	public async stopServer(): Promise<void> {
+		await this.server.close()
+	}
+
+	public getApp(): Express.Application {
+		return this.app
 	}
 }
 

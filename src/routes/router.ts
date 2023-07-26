@@ -84,13 +84,12 @@ class Router {
 		)
 	}
 
-	private setQuestionRoutes (): void {
-		this.router.get('/question', 
-			AuthController.isAuthenticated,
-			QuestionController.getQuestion
-		)
-		
+	private setQuestionRoutes (): void {		
 		this.router.route('/question')
+			.get(
+				AuthController.isAuthenticated,
+				QuestionController.getQuestion
+			)
 			.patch(
 				AuthController.isAuthenticated, 
 				QuestionController.sendAnswer

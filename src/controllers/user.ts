@@ -14,22 +14,13 @@ class UserController {
 
 	/**
 	 * Create User
-	 * POST @url '/user/create'
+	 * @url '/user/create'
+	 * @method POST
 	 */
 	public static async createUser (req: Request, res: Response): Promise<void> {
 		const { username, password } = req.body
 
-		try {
-			const userExists = await User.findOne({
-				where: {
-					username
-				}
-			})
-	
-			if(userExists) {
-				throw new Error('El nombre de usuario ya se encuentra en uso')
-			}
-
+		try {			
 			const user = User.build({
 				username,
 				password
@@ -41,7 +32,7 @@ class UserController {
 				message: 'Usuario creado satisfactoriamente'
 			})
 		} catch (error: any) {
-			res.status(300).json({
+			res.status(400).json({
 				code: 'error',
 				message: error.message
 			})
@@ -50,7 +41,9 @@ class UserController {
 
 	/**
 	 * Updates User Password
-	 * PUT, PATCH @url '/user/update/password'
+	 * @url '/user/update/password'
+	 * @method PUT
+	 * @method PATCH
 	 */
 	public static async updateUserPassword(req: IUserRequest, res: Response): Promise<void> {
 		const { newPassword } = req.body
@@ -70,7 +63,7 @@ class UserController {
 				message: 'Contraseña actualizada'
 			})
 		} catch(error: any) {
-			res.json({
+			res.status(500).json({
 				code: 'error',
 				message: error.message
 			})
@@ -79,7 +72,9 @@ class UserController {
 
 	/**
 	 * Update User Avatar
-	 * PUT, PATCH @url '/user/update/avatar'
+	 * @url '/user/update/avatar'
+	 * @method PUT
+	 * @method PATCH
 	 */
 	public static async updateUserAvatar(req: IUserRequest, res: Response): Promise<void> {
 		const { newAvatar } = req.body
@@ -99,7 +94,7 @@ class UserController {
 				message: 'Se actualizó el avatar'
 			})
 		} catch(error: any) {
-			res.status(400).json({
+			res.status(500).json({
 				code: 'error',
 				message: error.message
 			})
@@ -108,7 +103,8 @@ class UserController {
 
 	/**
 	 * Delete User
-	 * DELETE @url '/user/delete'
+	 * @url '/user/delete'
+	 * @method DELETE
 	 */
 	public static async deleteUser(req: IUserRequest, res: Response): Promise<void> {
 		const { userID } = req.body
@@ -138,7 +134,8 @@ class UserController {
 
 	/**
 	 * Get current user
-	 * GET @url '/user/current'
+	 * @url '/user/current'
+	 * @method GET
 	 */
 	public static getCurrentUser(req: IUserRequest, res: Response): void {
 		try {
@@ -166,7 +163,8 @@ class UserController {
 
 	/**
 	 * Get User Leaderboard *10 highest score*
-	 * GET @url '/user/getLeaderboard'
+	 * @url '/user/getLeaderboard'
+	 * @method GET
 	 */
 	public static async getLeaderboard (req: Request, res: Response): Promise<void> {
 		try {
@@ -184,7 +182,7 @@ class UserController {
 
 			res.status(200).json(leaderboard)
 		} catch(error: any) {
-			res.json({
+			res.status(422).json({
 				code: 'error',
 				message: error.message
 			})
@@ -193,6 +191,8 @@ class UserController {
 
 	/**
 	 * Get User Avatars
+	 * @url '/avatars/get'
+	 * @method GET
 	 */
 	public static getAvatars (req: Request, res: Response): void {
 		const avatarsDir = path.join(__dirname, '../../public', 'avatars');
@@ -202,7 +202,7 @@ class UserController {
 				res.status(500).send('Error al leer la carpeta de avatares');
 			} else {
 			const avatars = files.map((file) => `/avatars/${file}`);
-				res.json(avatars);
+				res.status(200).json(avatars);
 			}
 		})
 	}
