@@ -30,7 +30,6 @@ export const validateQuestion = (questionData: IQuestion) => {
     const validateOptions = (options: string[]) => {
         if (!Array.isArray(options) || options.length !== 4) {
             throw new QuestionValidationError('Las opciones deben ser un array de 4 cadenas')
-        } else {
         }
     }
 

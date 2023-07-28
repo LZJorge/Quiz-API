@@ -4,9 +4,9 @@ import sequelize from '../src/config/db'
 
 const app = new App()
 
-const request = supertest(app.getApp())
+export const request = supertest(app.getApp())
 
-const testUser = {
+export const testUser = {
     username: 'testuser',
     password: 'testpassword',
     wrongPassword: 'wrong-test-pass',
@@ -24,4 +24,15 @@ afterAll( async () => {
     await sequelize.close()
 })
 
-export { request, testUser }
+export const expectAuthenticationError = (response: Response) => {
+    expect(response.body).toMatchObject({
+        code: 'error',
+        message: 'Tienes que estar autenticado'
+    })
+}
+
+export const expectValidationError = (response: Response) => {
+    expect(response.body).toMatchObject({
+        message: 'Error de validación'
+    })
+}

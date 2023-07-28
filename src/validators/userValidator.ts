@@ -8,7 +8,7 @@ const sanitizeString = (value: string) => {
         throw new Error('Los campos no pueden comenzar con un caracter en blanco')
     }
 
-    const regex: RegExp = /^[a-zA-Z0-9]*$/
+    const regex = /^[a-zA-Z0-9]*$/
 
     if(!regex.test(value)) {
         throw new Error('Los campos no pueden contener caracteres especiales')
@@ -108,15 +108,15 @@ export const validateUpdateUserPassword = [
         })
         .withMessage('Las contraseñas no coinciden'),
         
-       body('password')
-       .custom( async (value, { req }) => {
-            const match = await req.user.verifyPassword(value)
-            if(!match) {
-                throw new Error('Las contraseña actual es incorrecta')
-            }
+    body('password')
+    .custom( async (value, { req }) => {
+        const match = await req.user.verifyPassword(value)
+        if(!match) {
+            throw new Error('Las contraseña actual es incorrecta')
+        }
 
-            return true
-        }),
+        return true
+    }),
 
     (req: Request, res: Response, next: NextFunction) => {
         handleValidationErrors(req, res, next)
@@ -144,12 +144,30 @@ export const validateUserAvatar = [
 ]
 
 export const validateDeleteUser = [
+    body('password')
+        .exists()
+        .notEmpty()
+        .withMessage('La contraseña es obligatoria')
+        .isString()
+        .isLength({ min: 8 })
+        .withMessage('La contraseña debe tener mínimo 8 caracteres'),
+
     body('userID')
         .exists()
         .notEmpty()
         .isString()
         .isUUID()
         .withMessage('El ID del usuario es obligatorio'),
+    
+    body('password')
+    .custom( async (value, { req }) => {
+        const match = await req.user.verifyPassword(value)
+        if(!match) {
+            throw new Error('Las contraseña es incorrecta')
+        }
+
+        return true
+    }),
 
     (req: Request, res: Response, next: NextFunction) => {
         handleValidationErrors(req, res, next)

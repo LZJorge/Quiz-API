@@ -21,9 +21,9 @@ class AuthController {
                 res.status(500).json('Ha ocurrido un error')
             } else if (!user) {
                 res.status(401).json({
-                	code: 'error',
-                	message: 'Usuario o contraseña incorrectos'
-            	})
+                    code: 'error',
+                    message: 'Usuario o contraseña incorrectos'
+                })
             } else {
                 req.login(user, (err: Error) => {
                     if (err) {
@@ -45,8 +45,8 @@ class AuthController {
         if(req.session) {
             req.session.destroy(()=> {
                 res.status(200).send({
-                	code: 'success',
-                	message: 'Se cerró la sesión'
+                    code: 'success',
+                    message: 'Se cerró la sesión'
                 })
             })
         } else {

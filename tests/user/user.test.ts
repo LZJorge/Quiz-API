@@ -1,4 +1,5 @@
-import { request, testUser } from '../setup'
+import { request, testUser, expectAuthenticationError, expectValidationError } from '../setup'
+import User from '../../src/models/User'
 import fs from 'fs'
 import path from 'path'
 
@@ -6,7 +7,13 @@ import path from 'path'
  * User controller test
  * 
  * Endpoints tested:
- * @url ''
+ * @url '/user/create'
+ * @url '/user/current'
+ * @url '/user/update/password'
+ * @url '/user/update/avatar'
+ * @url '/user/getLeaderboard'
+ * @url '/avatars/get'
+ * @url '/user/delete'
  */
 
 describe('User tests:', () => {
@@ -41,6 +48,7 @@ describe('User tests:', () => {
 
             .expect(422)
             .expect('Content-Type', /application\/json/)
+            .expect(expectValidationError)
         })
 
         it('should register new user', async () => {
@@ -55,6 +63,16 @@ describe('User tests:', () => {
 
             .expect(200)
             .expect('Content-Type', /application\/json/)
+            .expect( async () => {
+                const user = await User.findOne({
+                    where: {
+                        username: testUser.username
+                    }
+                })
+
+                expect(user).toBeTruthy()
+                expect(user?.username).toBe(testUser.username)
+            })
         })
     })
 
@@ -74,6 +92,10 @@ describe('User tests:', () => {
             })
             .expect(200)
             .expect('Content-Type', /application\/json/)
+            .expect( (response) => {
+                expect(response.headers['set-cookie']).toBeDefined()
+                expect(response.headers['set-cookie'][0]).toMatch(/^connect.sid=/)
+            })
 
             /**
              * Storing session cookie for furthers requests
@@ -94,6 +116,7 @@ describe('User tests:', () => {
         
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
 
         it('should return user data', async () => {
@@ -140,6 +163,7 @@ describe('User tests:', () => {
 
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
 
         it('will not update user password if actual user password don\'t match', async () => {
@@ -154,6 +178,7 @@ describe('User tests:', () => {
 
             .expect(422)
             .expect('Content-Type', /application\/json/)
+            .expect(expectValidationError)
         })
 
         it('will not update user password if both new passwords don\'t match', async () => {
@@ -168,6 +193,7 @@ describe('User tests:', () => {
 
             .expect(422)
             .expect('Content-Type', /application\/json/)
+            .expect(expectValidationError)
         })
 
         it('should update user password', async () => {
@@ -201,6 +227,7 @@ describe('User tests:', () => {
 
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
 
         it('will not update user avatar if newAvatar is in a diferent format', async () => {
@@ -213,6 +240,7 @@ describe('User tests:', () => {
 
             .expect(422)
             .expect('Content-Type', /application\/json/)
+            .expect(expectValidationError)
         })
 
         it('should update user avatar', async () => {
@@ -240,6 +268,7 @@ describe('User tests:', () => {
 
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
 
         it('Should return users leaderboard, ordered by score column', async () => {
@@ -259,14 +288,14 @@ describe('User tests:', () => {
      */
     describe('Getting avatars:', () => {
         const getAvatarsCount = (): number => {
-            const avatarsDir = path.join(__dirname, '../../public', 'avatars');
+            const avatarsDir = path.join(__dirname, '../../public', 'avatars')
 
             try {
-                const files = fs.readdirSync(avatarsDir);
-                return files.filter(file => file.startsWith('avatar-') && file.endsWith('.svg')).length;
+                const files = fs.readdirSync(avatarsDir)
+                return files.filter(file => file.startsWith('avatar-') && file.endsWith('.svg')).length
             } catch (error) {
-                console.error(error);
-                return 0;
+                console.error(error)
+                return 0
             }
         }
 
@@ -306,6 +335,7 @@ describe('User tests:', () => {
 
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
 
         it('will not delete user if not send userID', async () => {
@@ -315,6 +345,21 @@ describe('User tests:', () => {
 
             .expect(422)
             .expect('Content-Type', /application\/json/)
+            .expect(expectValidationError)
+        })
+
+        it('will not delete user if password is wrong', async () => {
+            await request
+            .delete('/user/delete')
+            .set('Cookie', cookie)
+            .send({
+                password: testUser.wrongPassword,
+                userID
+            })
+
+            .expect(422)
+            .expect('Content-Type', /application\/json/)
+            .expect(expectValidationError)
         })
         
         it('Should delete current user', async () => {
@@ -322,6 +367,7 @@ describe('User tests:', () => {
             .delete('/user/delete')
             .set('Cookie', cookie)
             .send({
+                password: testUser.updatedPassword,
                 userID
             })
 

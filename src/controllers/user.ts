@@ -169,7 +169,7 @@ class UserController {
 	public static async getLeaderboard (req: Request, res: Response): Promise<void> {
 		try {
 			const leaderboard = await User.findAll({
-				order: [["score", "DESC"]],
+				order: [['score', 'DESC']],
 				limit: 10,
 				attributes: [
 					'username',
@@ -195,14 +195,14 @@ class UserController {
 	 * @method GET
 	 */
 	public static getAvatars (req: Request, res: Response): void {
-		const avatarsDir = path.join(__dirname, '../../public', 'avatars');
+		const avatarsDir = path.join(__dirname, '../../public', 'avatars')
 
 		fs.readdir(avatarsDir, (err, files) => {
 			if (err) {
-				res.status(500).send('Error al leer la carpeta de avatares');
+				res.status(500).send('Error al leer la carpeta de avatares')
 			} else {
-			const avatars = files.map((file) => `/avatars/${file}`);
-				res.status(200).json(avatars);
+			const avatars = files.map((file) => `/avatars/${file}`)
+				res.status(200).json(avatars)
 			}
 		})
 	}

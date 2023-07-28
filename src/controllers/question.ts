@@ -49,7 +49,7 @@ class QuestionController {
     
             if(question) {
                 await User.update({
-                    totalQuestions: Sequelize.literal(`totalQuestions + 1`),
+                    totalQuestions: Sequelize.literal('totalQuestions + 1'),
                     activeQuestion: question.id
                 }, {
                     where: {
@@ -107,7 +107,7 @@ class QuestionController {
         if (question) {
             if (answer === question.correctAnswer) {
                 await User.update({
-                    successResponses: Sequelize.literal(`successResponses + 1`),
+                    successResponses: Sequelize.literal('successResponses + 1'),
                     activeQuestion: 0,
                     score: Sequelize.literal(`score + ${question.points}`)
                 }, {

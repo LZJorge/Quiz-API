@@ -1,4 +1,4 @@
-import { request, testUser } from '../setup'
+import { request, testUser, expectAuthenticationError } from '../setup'
 import User from '../../src/models/User'
 
 describe('Questions tests:', () => {
@@ -38,6 +38,10 @@ describe('Questions tests:', () => {
         })
         .expect(200)
         .expect('Content-Type', /application\/json/)
+        .expect( (response) => {
+            expect(response.headers['set-cookie']).toBeDefined()
+            expect(response.headers['set-cookie'][0]).toMatch(/^connect.sid=/)
+        })
     
         cookie = response.headers['set-cookie']
     })
@@ -56,6 +60,7 @@ describe('Questions tests:', () => {
 
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
 
         it('Should return random question', async () => {
@@ -96,6 +101,7 @@ describe('Questions tests:', () => {
 
             .expect(401)
             .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
         })
         
         describe('Sending incorrect answer:', () => {

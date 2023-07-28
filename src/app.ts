@@ -57,15 +57,15 @@ class App {
 			store: new SQLiteStore({ db: './db.sqlite3' }) as any,
 			cookie: {
 				sameSite: false,
-				httpOnly: true,
-				secure: false,
+				httpOnly: process.env.NODE_ENV === 'production' ? false : true,
+				secure: process.env.NODE_ENV === 'production' ? true : false,
 				maxAge: 1000 * 60 * 60 * 24,
 			}
 		}))
 
 		this.app.use(cors({
-			origin: 'http://localhost:5173',
-			methods: ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD'],
+			origin: process.env.APP_DOMAIN || 'http://localhost:5173',
+			methods: ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
 			credentials: true
 		}))
 		
@@ -89,7 +89,7 @@ class App {
 
 		console.log(`\n🚀 Server running on http://localhost:${this.port} in ${process.env.NODE_ENV} mode 🚀`)
 		console.log(`📅 Started at ${new Date()}`)
-		console.log(`\n🛑 Press CTRL-C to stop\n`)
+		console.log('\n🛑 Press CTRL-C to stop\n')
 	}
 
 	public async stopServer(): Promise<void> {
