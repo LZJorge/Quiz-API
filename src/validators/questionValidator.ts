@@ -5,6 +5,7 @@
  */
 
 import { IQuestion } from '../definitions'
+import { categories } from '../seeds/categorySeed'
 
 export class QuestionValidationError extends Error {
     constructor(message: string) {
@@ -45,9 +46,22 @@ export const validateQuestion = (questionData: IQuestion) => {
         }
     }
 
+    const validateCategory = (category: string) => {
+        let matchs: number = 0
+        categories.map((c) => {
+            if(c === category) {
+                matchs += 1
+            }
+        })
+        if(matchs === 0) {
+            throw new QuestionValidationError(`La categoría debe ser una de las siguientes: ${categories}`)
+        }
+    }
+
     validateQuestionText(questionData.question)
     validateCorrectAnswer(questionData.correctAnswer)
     validateOptions(questionData.options)
     validatePoints(questionData.points)
-    validateDifficulty(questionData.difficulty)  
+    validateDifficulty(questionData.difficulty)
+    validateCategory(questionData.category)  
 }

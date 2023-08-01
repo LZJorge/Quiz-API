@@ -8,6 +8,7 @@ import { Router as ExpressRouter } from 'express'
 import UserController from '../controllers/user'
 import QuestionController from '../controllers/question'
 import AuthController from '../controllers/auth'
+import CategoryController from '../controllers/category'
 import { 
 	validateCreateUser, 
 	validateUpdateUserPassword,
@@ -23,6 +24,7 @@ class Router {
 
 		this.setUserRoutes()
 		this.setQuestionRoutes()
+		this.setCategoriesRoutes()
 	}
 
 	private setUserRoutes (): void {
@@ -88,7 +90,7 @@ class Router {
 		this.router.route('/question')
 			.get(
 				AuthController.isAuthenticated,
-				QuestionController.getQuestion
+				QuestionController.getRandomQuestion
 			)
 			.patch(
 				AuthController.isAuthenticated, 
@@ -102,6 +104,18 @@ class Router {
 				AuthController.isAuthenticated, 
 				QuestionController.sendAnswer
 			)
+
+		this.router.get('/question/:category', 
+			AuthController.isAuthenticated, 
+			QuestionController.getQuestionByCategory
+		)
+	}
+
+	private setCategoriesRoutes (): void {
+		this.router.get('/category/get', 
+			AuthController.isAuthenticated, 
+			CategoryController.getCategories
+		)
 	}
 
 	public getRoutes (): ExpressRouter {

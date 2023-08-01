@@ -1,20 +1,37 @@
 import Question from '../models/Question'
-import questions from './questions.json'
+import sportsData from '../data/sportsData.json'
+import programmingData from '../data/programmingData.json'
+import { IQuestion } from '../definitions'
 import { QuestionValidationError, validateQuestion } from '../validators/questionValidator'
+import Category from '../models/Category'
 
-export async function loadData(): Promise<void> {
-    for (const questionData of questions) {
+async function loadData(data: IQuestion[]): Promise<void> {
+    for (const questionData of data) {
         try {
             validateQuestion(questionData)
             
-            const { question, correctAnswer, options, points, difficulty } = questionData
+            const { 
+                question, 
+                correctAnswer, 
+                options, 
+                points, 
+                difficulty,
+                category
+            } = questionData
+
+            const categoryData = await Category.findOne({
+                where: {
+                    name: category
+                }
+            })
 
             const questionRecord = Question.build({
                 question,
                 correctAnswer,
                 options,
                 points,
-                difficulty
+                difficulty,
+                categoryId: categoryData?.id
             })
 
             await questionRecord.save()
@@ -25,4 +42,9 @@ export async function loadData(): Promise<void> {
             }
         }
     }
+}
+
+export async function loadQuestionData(): Promise<void> {
+    await loadData(sportsData)
+    await loadData(programmingData)
 }

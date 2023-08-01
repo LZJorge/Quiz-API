@@ -9,7 +9,8 @@
       "1910"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2018?",
@@ -21,7 +22,8 @@
       "Brasil"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Quién es el máximo goleador de la historia de la Selección Argentina de Fútbol?",
@@ -33,7 +35,8 @@
       "Javier Zanetti"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Qué jugador de fútbol ha ganado más Balones de Oro en la historia?",
@@ -45,7 +48,8 @@
       "Marco van Basten"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se fundó el Club Atlético Boca Juniors?",
@@ -57,7 +61,8 @@
       "Chile"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el apodo de la Selección de Fútbol de Brasil?",
@@ -69,7 +74,8 @@
       "Los Cafeteros"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Quién es el entrenador con más títulos de la Copa Libertadores de América?",
@@ -81,7 +87,8 @@
       "Alex Ferguson"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Liga de Campeones de la UEFA?",
@@ -93,7 +100,8 @@
       "Robert Lewandowski"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se encuentra el Estadio Azteca, uno de los estadios más famosos del mundo?",
@@ -105,7 +113,8 @@
       "Brasil"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el club de fútbol más antiguo de España?",
@@ -117,7 +126,8 @@
       "Athletic Club"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿Qué jugador de fútbol ha ganado más Copas del Mundo en la historia?",
@@ -129,7 +139,8 @@
       "Lionel Messi"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En quéaño se fundó la Liga de Fútbol Profesional de Estados Unidos (MLS)?",
@@ -141,7 +152,8 @@
       "1998"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga de Campeones de la UEFA?",
@@ -153,7 +165,8 @@
       "Milan"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se encuentra el Estadio Maracaná, uno de los estadios más famosos del mundo?",
@@ -165,7 +178,8 @@
       "Chile"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Selección de Fútbol de Brasil?",
@@ -177,7 +191,8 @@
       "Neymar"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2014?",
@@ -189,7 +204,8 @@
       "Francia"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga de Fútbol Profesional de España?",
@@ -201,7 +217,8 @@
       "Valencia"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿Quién es el entrenador con más títulos de la Liga de Fútbol Profesional de España?",
@@ -213,7 +230,8 @@
       "Diego Simeone"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se fundó el Club Atlético River Plate?",
@@ -225,7 +243,8 @@
       "Chile"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Liga de Fútbol Profesional de España?",
@@ -237,7 +256,8 @@
       "Hugo Sánchez"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el apodo de la Selección de Fútbol de México?",
@@ -249,7 +269,8 @@
       "La Furia Roja"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el equipo de fútbol más antiguo de Italia?",
@@ -261,7 +282,8 @@
       "Inter Milan"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se fundó el Club Atlético Peñarol?",
@@ -273,7 +295,8 @@
       "Chile"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Selección de Fútbol de Alemania?",
@@ -285,7 +308,8 @@
       "Franz Beckenbauer"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2006?",
@@ -297,7 +321,8 @@
       "Brasil"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Selección de Fútbol de España?",
@@ -309,7 +334,8 @@
       "David Silva"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se encuentra el Estadio Monumental, uno de los estadios más grandes de América Latina?",
@@ -321,7 +347,8 @@
       "Colombia"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Liga MX de México?",
@@ -333,7 +360,8 @@
       "Carlos Hermosillo"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se celebró la Copa América en 2019?",
@@ -345,7 +373,8 @@
       "Perú"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga MX de México?",
@@ -357,7 +386,8 @@
       "Cruz Azul"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se fundó el Club Atlético Independiente?",
@@ -369,7 +399,8 @@
       "Chile"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia de la Copa Mundial de la FIFA?",
@@ -381,7 +412,8 @@
       "Miroslav Klose"
     ],
     "points":15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se fundó el Club Universidad Nacional, también conocido como Pumas UNAM?",
@@ -393,7 +425,8 @@
       "Chile"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el equipo de fútbol con más títulos de la Copa Libertadores de América?",
@@ -405,7 +438,8 @@
       "São Paulo FC"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se encuentra el Estadio Azteca, uno de los estadios más grandes del mundo?",
@@ -417,7 +451,8 @@
       "Argentina"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia del Club Atlético Boca Juniors?",
@@ -429,7 +464,8 @@
       "Carlos Tevez"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se celebró la Copa Mundial de la FIFA en 2014?",
@@ -441,7 +477,8 @@
       "Rusia"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el equipo de fútbol con más títulos de la Copa del Rey de España?",
@@ -453,7 +490,8 @@
       "Athletic Club"
     ],
     "points": 20,
-    "difficulty": "Difícil"
+    "difficulty": "Difícil",
+    "category": "Deportes"
   },
   {
     "question": "¿En qué país se fundó el Club Atlético River Plate?",
@@ -465,7 +503,8 @@
       "Chile"
     ],
     "points": 10,
-    "difficulty": "Fácil"
+    "difficulty": "Fácil",
+    "category": "Deportes"
   },
   {
     "question": "¿Cuál es el jugador de fútbol con más goles en la historia del FC Barcelona?",
@@ -477,6 +516,7 @@
       "Samuel Eto'o"
     ],
     "points": 15,
-    "difficulty": "Moderado"
+    "difficulty": "Moderado",
+    "category": "Deportes"
   }
 ]

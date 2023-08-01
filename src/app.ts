@@ -14,6 +14,7 @@ import Router from './routes/router'
 import sequelize from './config/db'
 import User from './models/User'
 import Question from './models/Question'
+import Category from './models/Category'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import passport from './config/passport'
@@ -76,6 +77,7 @@ class App {
 	private async setDatabases(): Promise<void> {
 		await sequelize.sync()
 		await User.sync()
+		await Category.sync()
 		await Question.sync()
 	}
 

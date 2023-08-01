@@ -9,53 +9,31 @@ import Sequelize from 'sequelize'
 import Question from '../models/Question'
 import User from '../models/User'
 import { IUserRequest } from '../definitions'
+import { updateScore, updateActiveQuestion } from '../services/userServices'
+import { getRandomQuestion, getQuestionById } from '../services/questionServices'
 
 class QuestionController {
 
     /**
-     * Get Question
+     * Get Random Question
      * @url '/question'
      * @method GET
      */
-    public static async getQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
-        const questionsCount = await Question.count()
-        const questionAttributes = [
-            'id', 
-            'question', 
-            'correctAnswer', 
-            'options', 
-            'points', 
-            'difficulty'
-        ]
+    public static async getRandomQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
 
+        /**
+         * Active question != 0 means user has active question
+         * So return the same question
+         */
         if(req.user.activeQuestion != 0) {
-            const question = await Question.findOne({
-                where: {
-                    id: req.user.activeQuestion
-                },
-                attributes: questionAttributes
-            })
+            const question = await getQuestionById(req.user.activeQuestion)
 
             res.status(200).json(question)
         } else {
-            const randomID = Math.floor(Math.random() * (questionsCount) + 1)
-
-            const question = await Question.findOne({
-                where: {
-                    id: randomID
-                },
-                attributes: questionAttributes
-            })
+            const question = await getRandomQuestion()
     
             if(question) {
-                await User.update({
-                    totalQuestions: Sequelize.literal('totalQuestions + 1'),
-                    activeQuestion: question.id
-                }, {
-                    where: {
-                        id: req.user.id
-                    }
-                })
+                await updateActiveQuestion(req.user.id, question.id)
     
                 req.user.activeQuestion = question.id
                 req.user.totalQuestions = req.user.totalQuestions + 1
@@ -69,8 +47,44 @@ class QuestionController {
                 })
             }
         }
+    }
 
+    /**
+     * Get Random Question by category
+     * @url '/question/:category'
+     * @method GET
+     */
+    public static async getQuestionByCategory(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
+        if(req.user.activeQuestion != 0) {
+            const q = await getQuestionById(req.user.activeQuestion)
+
+            if(q && q.Category?.name == req.params.category) {
+                res.status(200).json(q)
+                return
+            }
+        }
         
+        const question = await getRandomQuestion(req.params.category)
+
+        if(question) {
+            await updateActiveQuestion(req.user.id, question.id)
+
+            req.user.activeQuestion = question.id
+            req.user.totalQuestions = req.user.totalQuestions + 1
+
+            req.login(req.user, (error) => {
+                if(error) {
+                    next(error)
+                } else {
+                    res.status(200).json(question)
+                }
+            })
+        } else {
+            res.status(400).json({
+                code: 'error',
+                message: 'No existe esa categoría'
+            })
+        }
     }
 
     /**
@@ -82,82 +96,45 @@ class QuestionController {
      */
     public static async sendAnswer(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const { answer } = req.body
-        const questionID = req.user.activeQuestion
 
-        if(questionID == 0) {
+        if(req.user.activeQuestion == 0) {
             res.status(400).json({
                 message: 'No tienes ninguna pregunta activa'
             })
             return
         }
 
-        const question = await Question.findOne({
-            where: {
-                id: questionID
-            },
-            attributes: [
-                'id',
-                'correctAnswer',
-                'points'
-            ]
-        })
-
+        const question = await getQuestionById(req.user.activeQuestion)
         req.user.activeQuestion = 0
 
         if (question) {
-            if (answer === question.correctAnswer) {
-                await User.update({
-                    successResponses: Sequelize.literal('successResponses + 1'),
-                    activeQuestion: 0,
-                    score: Sequelize.literal(`score + ${question.points}`)
-                }, {
-                    where: {
-                        id: req.user.id
-                    }
-                })
+            const success: boolean = answer === question.correctAnswer
 
-                req.user.score += question.points
-                req.user.successResponses = req.user.successResponses + 1
+            const { 
+                updatedScore, 
+                updatedSuccessResponses 
+            } = await updateScore(req.user.id, success, question.points)
 
-                req.login(req.user, (error) => {
-                    if (error) {
-                        return next(error)
-                    }
+            req.user.score = updatedScore
+            req.user.successResponses = updatedSuccessResponses
 
+            req.login(req.user, (error) => {
+                if (error) {
+                    return next(error)
+                }
+
+                if(success) {
                     res.status(200).send({
                         code: 'success',
                         message: `¡Respuesta correcta! +${question.points} puntos`
                     })
-                })
-            } else {
-                await User.update({
-                    activeQuestion: 0,
-                    score: Sequelize.literal(
-                        `CASE 
-                            WHEN score >= 10 THEN score - 10
-                            WHEN score = 5 THEN score - 5
-                            ELSE score 
-                        END`
-                    )
-                }, {
-                    where: {
-                        id: req.user.id
-                    }
-                })
-
-                req.user.score = Math.max(req.user.score - 10, 0)
-
-                req.login(req.user, (error) => {
-                    if (error) {
-                        return next(error)
-                    }
-
+                } else {
                     res.status(200).send({
                         code: 'fail',
                         message: 'Respuesta incorrecta. -10 puntos'
                     })
-                })
-            }
+                }
+            })
         } else {
             res.status(500).send({
                 code: 'error',

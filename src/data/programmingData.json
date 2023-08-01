@@ -1,0 +1,379 @@
+[
+  {
+    "question": "¿Qué significa HTML en programación web?",
+    "correctAnswer": "HyperText Markup Language",
+    "options": [
+      "High-level Text Markup Language",
+      "HyperText Markup Language",
+      "Hyperlink Text Markup Language",
+      "High-level Text Modulation Language"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una variable en programación?",
+    "correctAnswer": "Un espacio de memoria para almacenar datos",
+    "options": [
+      "Un tipo de dato",
+      "Una variable global",
+      "Un espacio de memoria para almacenar datos",
+      "Un método para imprimir texto en pantalla"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una función recursiva en programación?",
+    "correctAnswer": "Una función que se llama a sí misma",
+    "options": [
+      "Una función que se llama a sí misma",
+      "Una función que acepta argumentos",
+      "Una función que no devuelve ningún valor",
+      "Una función que se ejecuta en segundo plano"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué significa CSS en programación web?",
+    "correctAnswer": "Cascading Style Sheets",
+    "options": [
+      "Cascading Style Sheets",
+      "Coding Style Sheets",
+      "Cascading Script Sheets",
+      "Coding Script Sheets"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una clase en programación orientada a objetos?",
+    "correctAnswer": "Un modelo para crear objetos",
+    "options": [
+      "Una función que devuelve un objeto",
+      "Un método para imprimir texto en pantalla",
+      "Un modelo para crear objetos",
+      "Un tipo de dato"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una excepción en programación?",
+    "correctAnswer": "Un error en tiempo de ejecución",
+    "options": [
+      "Una variable global",
+      "Un método para manejar errores",
+      "Un error en tiempo de ejecución",
+      "Un tipo de dato"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una API en programación?",
+    "correctAnswer": "Una interfaz de programación de aplicaciones",
+    "options": [
+      "Una herramienta para diseñar interfaces gráficas",
+      "Una interfaz de programación de aplicaciones",
+      "Un programa que realiza cálculos matemáticos complejos",
+      "Un método para acceder a bases de datos"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una sentencia if en programación?",
+    "correctAnswer": "Una estructura de control de flujo",
+    "options": [
+      "Una estructura de control de flujo",
+      "Un método para imprimir texto en pantalla",
+      "Una función que acepta argumentos",
+      "Una variable global"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es un bucle en programación?",
+    "correctAnswer": "Una estructura de control de flujo que repite un bloque de código",
+    "options": [
+      "Un método para manejar errores",
+      "Una estructura de control de flujo que repite un bloque de código",
+      "Una función que no devuelve ningún valor",
+      "Un tipo de dato"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es un método en programación?",
+    "correctAnswer": "Una función asociada a un objeto",
+    "options": [
+      "Un tipo de dato",
+      "Una variable global",
+      "Una función que se llama a sí misma",
+      "Una función asociada a un objeto"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una base de datos en programación?",
+    "correctAnswer": "Un sistema para almacenar y recuperar información",
+    "options": [
+      "Un método para imprimir texto en pantalla",
+      "Un tipo de dato",
+      "Un sistema para almacenar y recuperar información",
+      "Una variable global"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es un puntero en programación?",
+    "correctAnswer": "Una variable que almacena la dirección de memoria de otra variable",
+    "options": [
+      "Un tipo de dato",
+      "Una variable global",
+      "Una función que se llama a sí misma",
+      "Una variable que almacena la dirección de memoria de otra variable"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es el patrón de diseño MVC?",
+    "correctAnswer": "Modelo-Vista-Controlador",
+    "options": [
+      "Modelo-Vista-Controlador",
+      "Modelo-Base de datos-Controlador",
+      "Modelo-Vista-Base de datos",
+      "Modelo-Base de datos-Vista"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una librería en programación?",
+    "correctAnswer": "Un conjunto de funciones predefinidas",
+    "options": [
+      "Un repositorio de código abierto",
+      "Un conjunto de funciones predefinidas",
+      "Una herramienta para diseñar interfaces gráficas",
+      "Un método para manejar errores"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una base de datos relacional?",
+    "correctAnswer": "Un tipo de base de datos que utiliza tablas relacionadas",
+    "options": [
+      "Un tipo de base de datos que almacena imágenes",
+      "Un tipo de base de datos que utiliza tablas relacionadas",
+      "Un tipo de base de datos que almacena datos en formato XML",
+      "Un tipo de base de datos que almacena datos en formato JSON"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una API REST?",
+    "correctAnswer": "Una API que utiliza HTTP y JSON para intercambiar datos",
+    "options": [
+      "Una API que utiliza XML para intercambiar datos",
+      "Una API que utiliza FTP para intercambiar datos",
+      "Una API que utiliza HTTP y JSON para intercambiar datos",
+      "Una API que utiliza HTTPS para intercambiar datos"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una variable local en programación?",
+    "correctAnswer": "Una variable que solo es accesible dentro de una función",
+    "options": [
+      "Una variable que solo es accesible dentro de una función",
+      "Una variable que puede ser accedida desde cualquier parte del programa",
+      "Una variable que se inicializa con un valor predeterminado",
+      "Una variable que almacena direcciones de memoria"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una clase abstracta en programación orientada a objetos?",
+    "correctAnswer": "Una clase que no puede ser instanciada",
+    "options": [
+      "Una clase que no puede ser heredada",
+      "Una clase que no puede ser instanciada",
+      "Una clase que no tiene métodos ni atributos",
+      "Una clase que solocontiene métodos estáticos"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una función lambda en programación?",
+    "correctAnswer": "Una función anónima que puede ser pasada como argumento",
+    "options": [
+      "Una función que se llama a sí misma",
+      "Una función que no devuelve ningún valor",
+      "Una función anónima que puede ser pasada como argumento",
+      "Una función que siempre devuelve el mismo valor"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es el patrón de diseño Singleton?",
+    "correctAnswer": "Un patrón de diseño que garantiza que solo haya una instancia de una clase",
+    "options": [
+      "Un patrón de diseño que permite la creación de objetos con una única línea de código",
+      "Un patrón de diseño que garantiza que solo haya una instancia de una clase",
+      "Un patrón de diseño que permite la creación de clases sin utilizar constructores",
+      "Un patrón de diseño que permite la creación de objetos mediante la clonación de otros objetos"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es el principio SOLID en programación orientada a objetos?",
+    "correctAnswer": "Un conjunto de principios para el diseño de software",
+    "options": [
+      "Un conjunto de patrones de diseño",
+      "Un conjunto de buenas prácticas para programar",
+      "Un conjunto de principios para el testing de software",
+      "Un conjunto de principios para el diseño de software"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es la inyección de dependencias en programación?",
+    "correctAnswer": "Un patrón de diseño que permite la creación de objetos con una única línea de código",
+    "options": [
+      "Un patrón de diseño que permite la creación de objetos mediante la clonación de otros objetos",
+      "Un patrón de diseño que permite la creación de clases sin utilizar constructores",
+      "Un patrón de diseño que garantiza que solo haya una instancia de una clase",
+      "Un patrón de diseño que permite la gestión de dependencias entre objetos"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una función de orden superior en programación?",
+    "correctAnswer": "Una función que acepta funciones como argumentos o devuelve funciones como resultado",
+    "options": [
+      "Una función que se llama a sí misma",
+      "Una función que no devuelve ningún valor",
+      "Una función que acepta argumentos",
+      "Una función que acepta funciones como argumentos o devuelve funciones como resultado"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es el patrón de diseño Factory?",
+    "correctAnswer": "Un patrón de diseño que utiliza una clase para crear objetos de otra clase",
+    "options": [
+      "Un patrón de diseño que permite la creación de objetos mediante la clonación de otros objetos",
+      "Un patrón de diseño que permite la creación de objetos con una única línea de código",
+      "Un patrón de diseño que garantiza que solo haya una instancia de una clase",
+      "Un patrón de diseño que utiliza una clase para crear objetos de otra clase"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una función pura en programación?",
+    "correctAnswer": "Una función que no tiene efectos secundarios y siempre devuelve el mismo resultado para los mismos argumentos",
+    "options": [
+      "Una función que acepta argumentos",
+      "Una función que se llama a sí misma",
+      "Una función que no devuelve ningún valor",
+      "Una función que no tiene efectos secundarios y siempre devuelve el mismo resultado para los mismos argumentos"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es un IDE?",
+    "correctAnswer": "Un entorno de desarrollo integrado que permite escribir, depurar y ejecutar código en un solo lugar",
+    "options": [
+      "Un lenguaje de programación",
+      "Un archivo de texto plano que contiene código fuente",
+      "Un software que permite la gestión de proyectos de software",
+      "Un entorno de desarrollo integrado que permite escribir, depurar y ejecutar código en un solo lugar"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es una función en programación?",
+    "correctAnswer": "Un bloque de código que se puede llamar desde cualquier parte del programa y que realiza una tarea específica",
+    "options": [
+      "Un espacio de memoria que se utiliza para almacenar valores",
+      "Un archivo de texto plano que contiene código fuente",
+      "Un bloque de código que se puede llamar desde cualquier parte del programa y que realiza una tarea específica",
+      "Un conjunto de reglas y protocolos que se utilizan para la comunicación entre diferentes aplicaciones"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es la programación funcional?",
+    "correctAnswer": "Un paradigma de programación que se enfoca en las funciones",
+    "options": [
+      "Un paradigma de programación que se enfoca en los objetos",
+      "Un paradigma de programación que se enfoca en las estructuras de control de flujo",
+      "Un paradigma de programación que se enfoca en la programación orientada a eventos",
+      "Un paradigma de programación que seenfoca en las funciones"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  },
+  {
+    "question": "¿Qué es la recursividad en programación?",
+    "correctAnswer": "Una técnica que consiste en que una función se llame a sí misma de forma repetitiva hasta alcanzar una condición de salida",
+    "options": [
+      "Una técnica que consiste en que una función se llame a otra función de forma repetitiva",
+      "Una técnica que consiste en que una clase se herede a sí misma de forma repetitiva",
+      "Una técnica que consiste en que una variable se asigne a sí misma de forma repetitiva",
+      "Una técnica que consiste en que una función se llame a sí misma de forma repetitiva hasta alcanzar una condición de salida"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Programación"
+  }
+]

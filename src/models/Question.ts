@@ -6,8 +6,9 @@
 
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '../config/db'
-import { loadData } from '../seeds/questionSeed'
+import { loadQuestionData } from '../seeds/questionSeed'
 import { difficulty } from '../definitions'
+import Category from './Category'
 
 class Question extends Model {
     public id!: number
@@ -16,6 +17,7 @@ class Question extends Model {
     public options!: string[]
     public points!: number
     public difficulty!: difficulty
+    public categoryId!: number
     
     public readonly createdAt!: Date
     public readonly updatedAt!: Date
@@ -25,6 +27,7 @@ Question.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
+        unique: true,
         primaryKey: true,
     },
 
@@ -53,6 +56,11 @@ Question.init({
         allowNull: false,
     },
 
+    categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+
     createdAt: DataTypes.DATE,
 	updatedAt: DataTypes.DATE,
 }, {
@@ -62,10 +70,14 @@ Question.init({
         afterSync: async () => {
             const count = await Question.count()
             if (count === 0) { 
-                loadData()
+                await loadQuestionData()
             }
         }
     }
+})
+
+Question.belongsTo(Category, {
+    foreignKey: 'categoryId',
 })
 
 export default Question

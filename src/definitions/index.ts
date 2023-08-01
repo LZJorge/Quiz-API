@@ -5,6 +5,7 @@
  */
 
 import { Request } from 'express'
+import Question from '../models/Question'
 
 export type difficulty = 'Fácil' | 'Moderado' | 'Difícil'
 
@@ -34,4 +35,11 @@ export interface IQuestion {
     options: string[]
     points: number
     difficulty: string
+    category: string
+}
+
+export interface IQuestionWithCategory extends Question {
+    Category?: {
+        name: string
+    }
 }

@@ -70,7 +70,7 @@ npm start
 > You can run api tests with
 
 ```bash
-# Use this after step 4 instead of npm start to test api
+# Use this after to test api
 npm test
 ```
 
@@ -83,7 +83,9 @@ Below is a table of the available endpoints in this API.
 
 | Method | URL              | Description                                | Request body                            |
 | ------ | ---------------- | ------------------------------------------ | --------------------------------------- |
-| GET    | /question        | Gives a random question (active a question) | N/A                                     |
+| GET    | /question        | Gives a random question (or active a question) | N/A                                     |
+| GET    | /question/:category   | Gives a random question filtered by especific category (updates active a question) | param: `category`                                     |
+| GET    | /category/get        | Gives list of all availables categories | N/A                                     |
 | POST, PUT, PATCH    | /question        | Send answer (to user active question)       | `answer`                                |
 | POST   | /auth/login      | Authenticate user                          | `username`, `password`                  |
 | POST   | /user/create     | Register user                              | `username`, `password`, `passwordConfirm` |
@@ -104,9 +106,9 @@ POST {{API}}/user/create
 content-type: application/json
 
 {
-    "username": "sample",
-    "password": "12345678",
-    "passwordConfirm": "12345678"
+  "username": "sample",
+  "password": "12345678",
+  "passwordConfirm": "12345678"
 }
 ```
 
@@ -116,8 +118,8 @@ POST {{API}}/auth/login
 content-type: application/json
 
 {
-    "username": "sample",
-    "password": "12345678"
+  "username": "sample",
+  "password": "12345678"
 }
 ```
 
@@ -127,7 +129,7 @@ PUT {{API}}/question
 content-type: application/json
 
 {
-    "answer": "Brasil"
+  "answer": "Brasil"
 }
 ```
 
@@ -140,7 +142,7 @@ content-type: application/json
   "user": {
     "id": "uuid147f-bc20-4cd4-99f9-a9ba787db693",
     "username": "JohnDoe",
-    "avatar": "avatars/avatar-16.svg",
+    "avatar": "avatars/avatar-00.svg",
     "score": 0,
     "totalQuestions": 0,
     "successResponses": 0,
@@ -152,17 +154,20 @@ content-type: application/json
 #### Get question
 ```json
 {
-  "id": 17,
-  "question": "¿Cuál es el equipo de fútbol con más títulos de la Liga de Fútbol Profesional de España?",
-  "correctAnswer": "Real Madrid",
+  "id": 34,
+  "question": "¿Cuál es el equipo de fútbol con más títulos de la Copa Libertadores de América?",
+  "correctAnswer": "Club Atlético Independiente",
   "options": [
-    "Real Madrid",
-    "Barcelona",
-    "Atlético de Madrid",
-    "Valencia"
+    "Club Atlético Independiente",
+    "Boca Juniors",
+    "River Plate",
+    "São Paulo FC"
   ],
   "points": 20,
-  "difficulty": "Difícil"
+  "difficulty": "Difícil",
+  "Category": {
+    "name": "Deportes"
+  }
 }
 ```
 

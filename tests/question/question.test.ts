@@ -10,10 +10,11 @@ describe('Questions tests:', () => {
     let cookie: string
 
     /**
-     * Stores the correct answer of the question
+     * Stores & points the correct answer of the question
      * This is used to test answering a question
      */
     let correctAnswer: string
+    let points: number
 
     beforeAll( async () => {
         await User.create({
@@ -70,7 +71,7 @@ describe('Questions tests:', () => {
 
             .expect(200)
             .expect('Content-Type', /application\/json/)
-            .expect( (response) => {
+            .expect( async (response) => {
                 expect(response.body).toMatchObject({
                     id: expect.any(Number), 
                     question: expect.any(String), 
@@ -79,6 +80,16 @@ describe('Questions tests:', () => {
                     points: expect.any(Number),
                     difficulty: expect.stringMatching(/^(Fácil|Moderado|Difícil)$/)
                 })
+
+                const user = await User.findOne({
+                    where: {
+                        username: testUser.username
+                    }
+                })
+
+                expect(user).toBeTruthy()
+                expect(user?.totalQuestions).toBe(1)
+                expect(user?.activeQuestion).toBe(response.body.id)
             })
         })
     })
@@ -118,8 +129,18 @@ describe('Questions tests:', () => {
     
                 .expect(200)
                 .expect('Content-Type', /application\/json/)
-                .expect( (response) => {
+                .expect( async (response) => {
                     expect(response.body.code).toBe('fail')
+
+                    const user = await User.findOne({
+                        where: {
+                            username: testUser.username
+                        }
+                    })
+
+                    expect(user).toBeTruthy()
+                    expect(user?.score).toBe(0)
+                    expect(user?.activeQuestion).toBe(0)
                 })
             })
         })
@@ -136,6 +157,7 @@ describe('Questions tests:', () => {
                 .expect('Content-Type', /application\/json/)
 
                 correctAnswer = response.body.correctAnswer
+                points = response.body.points
             })
 
             updateCookie()
@@ -151,10 +173,92 @@ describe('Questions tests:', () => {
     
                 .expect(200)
                 .expect('Content-Type', /application\/json/)
-                .expect( (response) => {
+                .expect( async (response) => {
                     expect(response.body.code).toBe('success')
+
+                    const user = await User.findOne({
+                        where: {
+                            username: testUser.username
+                        }
+                    })
+
+                    expect(user).toBeTruthy()
+                    expect(user?.score).toBe(points)
+                    expect(user?.activeQuestion).toBe(0)
                 })
             })
+        })
+    })
+
+    /**
+     * Get random question by especific category
+     * @url '/question/:category'
+     * @method GET
+     */
+    describe('Getting random question of especific category:', () => {
+        let previousQuestion: any
+        updateCookie()
+
+        it('will not return question if not send session cookie', async () => {
+            await request
+            .get('/question/Deportes')
+
+            .expect(401)
+            .expect('Content-Type', /application\/json/)
+            .expect(expectAuthenticationError)
+        })
+
+        it('will not return random question if category don\'t exists', async () => {
+            await request
+            .get('/question/unexistent-category')
+            .set('Cookie', cookie)
+
+            .expect(400)
+            .expect('Content-Type', /application\/json/)
+            .expect( (response) => {
+                expect(response.body).toMatchObject({
+                    code: 'error',
+                    message: 'No existe esa categoría'
+                })
+            })
+        })
+
+        it('Should return random question by especific category', async () => {
+            const response = await request
+            .get('/question/Deportes')
+            .set('Cookie', cookie)
+
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+            .expect( (response) => {
+                expect(response.body).toMatchObject({
+                    id: expect.any(Number), 
+                    question: expect.any(String), 
+                    correctAnswer: expect.any(String), 
+                    options: expect.any(Array), 
+                    points: expect.any(Number),
+                    difficulty: expect.stringMatching(/^(Fácil|Moderado|Difícil)$/),
+                    Category: {
+                        name: expect.stringMatching(/Deportes/)
+                    }
+                })
+            })
+
+            previousQuestion = response.body
+        })
+
+        updateCookie()
+
+        it('Should return same question if has active question of same especific category', async () => {
+            await request
+            .get('/question/Deportes')
+            .set('Cookie', cookie)
+
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+            .expect( (response) => {
+                expect(response.body).toMatchObject(previousQuestion)
+            })    
         })
     })
 })
