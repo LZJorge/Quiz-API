@@ -3,11 +3,7 @@
  *
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
-
 import { NextFunction, Response } from 'express'
-import Sequelize from 'sequelize'
-import Question from '../models/Question'
-import User from '../models/User'
 import { IUserRequest } from '../definitions'
 import { updateScore, updateActiveQuestion } from '../services/userServices'
 import { getRandomQuestion, getQuestionById } from '../services/questionServices'

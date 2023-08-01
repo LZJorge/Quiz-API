@@ -47,7 +47,7 @@ export const validateQuestion = (questionData: IQuestion) => {
     }
 
     const validateCategory = (category: string) => {
-        let matchs: number = 0
+        let matchs = 0
         categories.map((c) => {
             if(c === category) {
                 matchs += 1

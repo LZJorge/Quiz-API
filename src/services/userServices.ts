@@ -1,5 +1,5 @@
-import User from "../models/User"
-import Sequelize = require("sequelize")
+import User from '../models/User'
+import Sequelize = require('sequelize')
 
 interface UpdatedScore {
     updatedScore: number

@@ -1,7 +1,6 @@
-import { request, testUser, expectAuthenticationError } from "../setup"
-import User from "../../src/models/User"
-import { categories } from "../../src/seeds/categorySeed"
-import Category from "../models/Category"
+import { request, testUser, expectAuthenticationError } from '../setup'
+import User from '../../src/models/User'
+import { categories } from '../../src/seeds/categorySeed'
 
 describe('Categories tests:', () => {
 

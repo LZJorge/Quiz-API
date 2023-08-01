@@ -1,7 +1,7 @@
-import Question from "../models/Question"
-import Category from "../models/Category"
-import Sequelize from "sequelize"
-import { IQuestionWithCategory } from "../definitions"
+import Question from '../models/Question'
+import Category from '../models/Category'
+import Sequelize from 'sequelize'
+import { IQuestionWithCategory } from '../definitions'
 
 const questionAttributes = [
     'id', 
