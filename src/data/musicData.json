@@ -1,0 +1,457 @@
+[
+  {
+    "question": "¿Cuál es el álbum más vendido de todos los tiempos?",
+    "correctAnswer": "Thriller",
+    "options": [
+      "Thriller",
+      "Back in Black",
+      "The Dark Side of the Moon",
+      "Bat Out of Hell"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Quién es el vocalista de la banda Queen?",
+    "correctAnswer": "Freddie Mercury",
+    "options": [
+      "Freddie Mercury",
+      "Robert Plant",
+      "Mick Jagger",
+      "David Bowie"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo de la cantante Madonna?",
+    "correctAnswer": "Madonna Louise Ciccone",
+    "options": [
+      "Madonna Louise Ciccone",
+      "Madonna Louise Veronica Ciccone",
+      "Madonna Louise Penniman",
+      "Madonna Louise Ritchie"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre real del rapero Eminem?",
+    "correctAnswer": "Marshall Bruce Mathers III",
+    "options": [
+      "Marshall Bruce Mathers III",
+      "Curtis James Jackson III",
+      "Calvin Cordozar Broadus Jr.",
+      "Shawn Corey Carter"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante The Weeknd?",
+    "correctAnswer": "Abel Makkonen Tesfaye",
+    "options": [
+      "Abel Makkonen Tesfaye",
+      "Austin Richard Post",
+      "Rakim Mayers",
+      "Symere Woods"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre real del cantante Elton John?",
+    "correctAnswer": "Reginald Kenneth Dwight",
+    "options": [
+      "Reginald Kenneth Dwight",
+      "David Robert Jones",
+      "Gordon Matthew Thomas Sumner",
+      "Paul David Hewson"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo de la cantante Beyoncé?",
+    "correctAnswer": "Beyoncé Giselle Knowles-Carter",
+    "options": [
+      "Beyoncé Giselle Knowles-Carter",
+      "Beyoncé Giselle Carter-Knowles",
+      "Beyoncé Giselle Carter",
+      "Beyoncé Giselle Knowles"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Bob Marley?",
+    "correctAnswer": "Robert Nesta Marley",
+    "options": [
+      "Robert Nesta Marley",
+      "Bob Marley",
+      "Robert Marley",
+      "Nesta Marley"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el álbum más vendido de la banda AC/DC?",
+    "correctAnswer": "Back in Black",
+    "options": [
+      "Back in Black",
+      "Highway to Hell",
+      "The Razors Edge",
+      "Powerage"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Freddie Mercury?",
+    "correctAnswer": "Farrokh Bulsara",
+    "options": [
+      "Farrokh Bulsara",
+      "Frederick Mercury",
+      "Freddy Bulsara",
+      "Frederick Farrokh"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Michael Jackson?",
+    "correctAnswer": "Michael Joseph Jackson",
+    "options": [
+      "Michael Joseph Jackson",
+      "Michael John Jackson",
+      "Michael James Jackson",
+      "Michael David Jackson"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Prince?",
+    "correctAnswer": "Prince Rogers Nelson",
+    "options": [
+      "Prince Rogers Nelson",
+      "Prince Nelson Rogers",
+      "Prince Rogers",
+      "Prince Nelson"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante David Bowie?",
+    "correctAnswer": "David Robert Jones",
+    "options": [
+      "David Robert Jones",
+      "David Bowie Jones",
+      "David Robert Bowie",
+      "David Jones Bowie"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Mick Jagger?",
+    "correctAnswer": "Michael Philip Jagger",
+    "options": [
+      "Michael Philip Jagger",
+      "Mick Philip Jagger",
+      "Michael Jagger",
+      "Mick Jagger"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Kurt Cobain?",
+    "correctAnswer": "Kurt Donald Cobain",
+    "options": [
+      "Kurt Donald Cobain",
+      "Kurt Cobain",
+      "Donald Cobain",
+      "Kurt Donald"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Jimi Hendrix?",
+    "correctAnswer": "James Marshall Hendrix",
+    "options": [
+      "James Marshall Hendrix",
+      "Jimi Hendrix",
+      "James Hendrix",
+      "Marshall Hendrix"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante John Lennon?",
+    "correctAnswer": "John Winston Ono Lennon",
+    "options": [
+      "John Winston Ono Lennon",
+      "John Lennon",
+      "Winston Lennon",
+      "John Ono Lennon"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Paul McCartney?",
+    "correctAnswer": "James Paul McCartney",
+    "options": [
+      "James Paul McCartney",
+      "Paul McCartney",
+      "James McCartney",
+      "Paul James McCartney"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Freddie Mercury?",
+    "correctAnswer": "Farrokh Bulsara",
+    "options": [
+      "Farrokh Bulsara",
+      "Frederick Mercury",
+      "Freddy Bulsara",
+      "Frederick Farrokh"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre completo del cantante Michael Jackson?",
+    "correctAnswer": "Michael Joseph Jackson",
+    "options": [
+      "Michael Joseph Jackson",
+      "Michael John Jackson",
+      "Michael James Jackson",
+      "Michael David Jackson"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el instrumento musical más antiguo del mundo?",
+    "correctAnswer": "Flauta",
+    "options": [
+      "Flauta",
+      "Tambor",
+      "Lira",
+      "Arpa"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el compositor de la famosa obra 'La Novena Sinfonía'?",
+    "correctAnswer": "Ludwig van Beethoven",
+    "options": [
+      "Ludwig van Beethoven",
+      "Wolfgang Amadeus Mozart",
+      "Johann Sebastian Bach",
+      "Franz Schubert"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el género musical originario de Jamaica?",
+    "correctAnswer": "Reggae",
+    "options": [
+      "Reggae",
+      "Salsa",
+      "Bachata",
+      "Merengue"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso guitarrista conocido como 'Slowhand'?",
+    "correctAnswer": "Eric Clapton",
+    "options": [
+      "Eric Clapton",
+      "Jimi Hendrix",
+      "Jimmy Page",
+      "Carlos Santana"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso compositor de música clásica conocido como 'El Rey de la Polca'?",
+    "correctAnswer": "Johann Strauss II",
+    "options": [
+      "Johann Strauss II",
+      "Wolfgang Amadeus Mozart",
+      "Ludwig van Beethoven",
+      "Franz Schubert"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿En qué ciudad se encuentra el famoso teatro de ópera La Scala?",
+    "correctAnswer": "Milán",
+    "options": [
+      "Milán",
+      "Viena",
+      "París",
+      "Roma"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso director de orquesta venezolano fundador del Sistema de Orquestas Juveniles e Infantiles de Venezuela?",
+    "correctAnswer": "José Antonio Abreu",
+    "options": [
+      "José Antonio Abreu",
+      "Gustavo Dudamel",
+      "Simón Bolívar",
+      "Carlos Kleiber"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso ballet creado por Piotr Ilich Tchaikovsky?",
+    "correctAnswer": "El Lago de los Cisnes",
+    "options": [
+      "El Lago de los Cisnes",
+      "El Cascanueces",
+      "La Bella Durmiente",
+      "Romeo y Julieta"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso festival de música y arte que se celebra anualmente en el desierto de Nevada?",
+    "correctAnswer": "Burning Man",
+    "options": [
+      "Burning Man",
+      "Coachella",
+      "Glastonbury",
+      "Tomorrowland"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso guitarrista mexicano conocido como 'Santana'?",
+    "correctAnswer": "Carlos Santana",
+    "options": [
+      "Carlos Santana",
+      "Eric Clapton",
+      "Jimi Hendrix",
+      "Jimmy Page"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿En qué año se lanzó el álbum 'Thriller' de Michael Jackson?",
+    "correctAnswer": "1982",
+    "options": [
+      "1982",
+      "1984",
+      "1986",
+      "1988"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso festival de música que se celebra anualmente en la ciudad de Austin, Texas?",
+    "correctAnswer": "South by Southwest (SXSW)",
+    "options": [
+      "South by Southwest (SXSW)",
+      "Coachella",
+      "Lollapalooza",
+      "Bonnaroo"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso guitarrista británico conocido como 'God'?",
+    "correctAnswer": "Eric Clapton",
+    "options": [
+      "Eric Clapton",
+      "Jimi Hendrix",
+      "Jimmy Page",
+      "Carlos Santana"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿En qué ciudad se encuentra el famoso teatro Bolshói?",
+    "correctAnswer": "Moscú",
+    "options": [
+      "Moscú",
+      "San Petersburgo",
+      "París",
+      "Londres"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  },
+  {
+    "question": "¿Cuál es el nombre del famoso festival de música que se celebra anualmente en el desierto de California?",
+    "correctAnswer": "Coachella",
+    "options": [
+      "Coachella",
+      "Burning Man",
+      "Glastonbury",
+      "Tomorrowland"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Música"
+  }
+]

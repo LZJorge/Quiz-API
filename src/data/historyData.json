@@ -1,0 +1,483 @@
+[
+  {
+    "question": "¿Quién fue el primer emperador romano?",
+    "correctAnswer": "Augusto",
+    "options": [
+      "Augusto",
+      "Julio César",
+      "Nerón",
+      "Trajano"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año comenzó la Revolución Francesa?",
+    "correctAnswer": "1789",
+    "options": [
+      "1789",
+      "1799",
+      "1804",
+      "1815"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Cuál fue la capital del Imperio Romano de Occidente?",
+    "correctAnswer": "Roma",
+    "options": [
+      "Roma",
+      "Atenas",
+      "Cartago",
+      "Constantinopla"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el primer presidente de los Estados Unidos?",
+    "correctAnswer": "George Washington",
+    "options": [
+      "George Washington",
+      "Thomas Jefferson",
+      "John Adams",
+      "Abraham Lincoln"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se firmó la Declaración de Independencia de los Estados Unidos?",
+    "correctAnswer": "1776",
+    "options": [
+      "1776",
+      "1789",
+      "1804",
+      "1812"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Cubana?",
+    "correctAnswer": "Fidel Castro",
+    "options": [
+      "Fidel Castro",
+      "Che Guevara",
+      "Raul Castro",
+      "Camilo Cienfuegos"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la caída del Muro de Berlín?",
+    "correctAnswer": "1989",
+    "options": [
+      "1989",
+      "1991",
+      "1985",
+      "1994"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Mexicana?",
+    "correctAnswer": "Emiliano Zapata",
+    "options": [
+      "Emiliano Zapata",
+      "Pancho Villa",
+      "Porfirio Díaz",
+      "Venustiano Carranza"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de la India?",
+    "correctAnswer": "1947",
+    "options": [
+      "1947",
+      "1950",
+      "1939",
+      "1962"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Francesa?",
+    "correctAnswer": "Robespierre",
+    "options": [
+      "Robespierre",
+      "Napoleón Bonaparte",
+      "Marat",
+      "Danton"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la Batalla de Waterloo?",
+    "correctAnswer": "1815",
+    "options": [
+      "1815",
+      "1804",
+      "1799",
+      "1820"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el último zar de Rusia?",
+    "correctAnswer": "Nicolás II",
+    "options": [
+      "Nicolás II",
+      "Alejandro II",
+      "Pedro I",
+      "Iván el Terrible"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la Revolución Industrial?",
+    "correctAnswer": "1760",
+    "options": [
+      "1760",
+      "1800",
+      "1850",
+      "1900"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el primer emperador de China?",
+    "correctAnswer": "Qin Shi Huang",
+    "options": [
+      "Qin Shi Huang",
+      "Mao Zedong",
+      "Sun Yat-sen",
+      "Deng Xiaoping"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la Revolución Bolchevique en Rusia?",
+    "correctAnswer": "1917",
+    "options": [
+      "1917",
+      "1905",
+      "1921",
+      "1930"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el primer presidente de México?",
+    "correctAnswer": "Guadalupe Victoria",
+    "options": [
+      "Guadalupe Victoria",
+      "Benito Juárez",
+      "Porfirio Díaz",
+      "Emiliano Zapata"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Brasil?",
+    "correctAnswer": "1822",
+    "options": [
+      "1822",
+      "1810",
+      "1830",
+      "1848"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Industrial?",
+    "correctAnswer": "James Watt",
+    "options": [
+      "James Watt",
+      "Thomas Edison",
+      "Alexander Graham Bell",
+      "Henry Ford"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Argentina?",
+    "correctAnswer": "1816",
+    "options": [
+      "1816",
+      "1820",
+      "1830",
+      "1840"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Americana?",
+    "correctAnswer": "George Washington",
+    "options": [
+      "George Washington",
+      "Thomas Jefferson",
+      "John Adams",
+      "Benjamin Franklin"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Haití?",
+    "correctAnswer": "1804",
+    "options": [
+      "1804",
+      "1810",
+      "1820",
+      "1830"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Haitiana?",
+    "correctAnswer": "Toussaint Louverture",
+    "options": [
+      "Toussaint Louverture",
+      "Jean-Jacques Dessalines",
+      "Henri Christophe",
+      "Alexandre Pétion"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Grecia?",
+    "correctAnswer": "1821",
+    "options": [
+      "1821",
+      "1830",
+      "1848",
+      "1856"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la independencia de Grecia?",
+    "correctAnswer": "Theodoros Kolokotronis",
+    "options": [
+      "Theodoros Kolokotronis",
+      "Ioannis Kapodistrias",
+      "Alexandros Mavrokordatos",
+      "Georgios Karaiskakis"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Perú?",
+    "correctAnswer": "1821",
+    "options": [
+      "1821",
+      "1830",
+      "1840",
+      "1850"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el primer presidente de Estados Unidos en ser asesinado?",
+    "correctAnswer": "Abraham Lincoln",
+    "options": [
+      "Abraham Lincoln",
+      "John F. Kennedy",
+      "James A. Garfield",
+      "William McKinley"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la Revolución Industrial en Inglaterra?",
+    "correctAnswer": "1760",
+    "options": [
+      "1760",
+      "1800",
+      "1850",
+      "1900"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Rusa en 1917?",
+    "correctAnswer": "Vladimir Lenin",
+    "options": [
+      "Vladimir Lenin",
+      "Joseph Stalin",
+      "Leon Trotsky",
+      "Mikhail Gorbachev"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de México?",
+    "correctAnswer": "1821",
+    "options": [
+      "1821",
+      "1810",
+      "1830",
+      "1840"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Cubana?",
+    "correctAnswer": "Fidel Castro",
+    "options": [
+      "Fidel Castro",
+      "Che Guevara",
+      "Raul Castro",
+      "Camilo Cienfuegos"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Argentina?",
+    "correctAnswer": "1816",
+    "options": [
+      "1816",
+      "1820",
+      "1830",
+      "1840"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la Revolución Francesa?",
+    "correctAnswer": "Robespierre",
+    "options": [
+      "Robespierre",
+      "Napoleón Bonaparte",
+      "Marat",
+      "Danton"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Brasil?",
+    "correctAnswer": "1822",
+    "options": [
+      "1822",
+      "1810",
+      "1830",
+      "1848"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la independencia de Brasil?",
+    "correctAnswer": "Dom Pedro I",
+    "options": [
+      "Dom Pedro I",
+      "José Bonifacio",
+      "Tiradentes",
+      "Getúlio Vargas"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Chile?",
+    "correctAnswer": "1818",
+    "options": [
+      "1818",
+      "1820",
+      "1830",
+      "1840"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿Quién fue el líder de la independencia de Chile?",
+    "correctAnswer": "Bernardo O'Higgins",
+    "options": [
+      "Bernardo O'Higgins",
+      "José de San Martín",
+      "Manuel Rodríguez",
+      "Arturo Prat"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  },
+  {
+    "question": "¿En qué año se produjo la independencia de Venezuela?",
+    "correctAnswer": "1811",
+    "options": [
+      "1811",
+      "1820",
+      "1830",
+      "1840"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Historia"
+  }
+]

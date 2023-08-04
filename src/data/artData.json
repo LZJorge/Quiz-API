@@ -1,0 +1,262 @@
+[
+  {
+    "question": "¿Quién pintó La Mona Lisa?",
+    "correctAnswer": "Leonardo da Vinci",
+    "options": [
+      "Leonardo da Vinci",
+      "Pablo Picasso",
+      "Vincent van Gogh",
+      "Michelangelo"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+  },
+    {
+    "question": "¿Cuál es la obra más famosa de Vincent van Gogh?",
+    "correctAnswer": "La noche estrellada",
+    "options": [
+    "La noche estrellada",
+    "El grito",
+    "La última cena",
+    "La persistencia de la memoria"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la novela 'Don Quijote de la Mancha'?",
+    "correctAnswer": "Miguel de Cervantes",
+    "options": [
+    "Miguel de Cervantes",
+    "William Shakespeare",
+    "Friedrich Nietzsche",
+    "Jorge Luis Borges"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿En qué siglo vivió el pintor italiano Caravaggio?",
+    "correctAnswer": "Siglo XVI",
+    "options": [
+    "Siglo XVI",
+    "Siglo XVII",
+    "Siglo XVIII",
+    "Siglo XIX"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la obra de teatro 'Romeo y Julieta'?",
+    "correctAnswer": "William Shakespeare",
+    "options": [
+    "William Shakespeare",
+    "Friedrich Nietzsche",
+    "Miguel de Cervantes",
+    "Jorge Luis Borges"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Cuál es la escultura más famosa de Miguel Ángel?",
+    "correctAnswer": "David",
+    "options": [
+    "David",
+    "La piedad",
+    "El pensador",
+    "El beso"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién pintó 'La noche estrellada'?",
+    "correctAnswer": "Vincent van Gogh",
+    "options": [
+    "Vincent van Gogh",
+    "Pablo Picasso",
+    "Leonardo da Vinci",
+    "Michelangelo"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Cuál es la obra más famosa de Pablo Picasso?",
+    "correctAnswer": "Guernica",
+    "options": [
+    "Guernica",
+    "El grito",
+    "La última cena",
+    "La persistencia de la memoria"
+    ],
+    "points": 10,
+    "difficulty": "Fácil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la novela '1984'?",
+    "correctAnswer": "George Orwell",
+    "options": [
+    "George Orwell",
+    "Fyodor Dostoevsky",
+    "J.R.R. Tolkien",
+    "Jane Austen"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Cuál es la obra más famosa de Salvador Dalí?",
+    "correctAnswer": "La persistencia de la memoria",
+    "options": [
+    "La persistencia de la memoria",
+    "El grito",
+    "La última cena",
+    "Guernica"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la obra de teatro 'Hamlet'?",
+    "correctAnswer": "William Shakespeare",
+    "options": [
+    "William Shakespeare",
+    "Friedrich Nietzsche",
+    "Miguel de Cervantes",
+    "Jorge Luis Borges"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿En qué siglo vivió el pintor neerlandés Rembrandt?",
+    "correctAnswer": "Siglo XVII",
+    "options": [
+    "Siglo XVII",
+    "Siglo XVI",
+    "Siglo XVIII",
+    "Siglo XIX"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la novela 'Cien años de soledad'?",
+    "correctAnswer": "Gabriel García Márquez",
+    "options": [
+    "Gabriel García Márquez",
+    "Jorge Luis Borges",
+    "Fyodor Dostoevsky",
+    "Jane Austen"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Cuál es la escultura más famosa de Auguste Rodin?",
+    "correctAnswer": "El pensador",
+    "options": [
+    "El pensador",
+    "David",
+    "La piedad",
+    "El beso"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién pintó 'Las señoritas de Avignon'?",
+    "correctAnswer": "Pablo Picasso",
+    "options": [
+    "Pablo Picasso",
+    "Vincent van Gogh",
+    "Leonardo da Vinci",
+    "Michelangelo"
+    ],
+    "points": 15,
+    "difficulty": "Moderado",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Cuál es la obra más famosa de Leonardo da Vinci?",
+    "correctAnswer": "La última cena",
+    "options": [
+    "La última cena",
+    "El grito",
+    "Guernica",
+    "La persistencia de la memoria"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la obra de teatro 'Macbeth'?",
+    "correctAnswer": "William Shakespeare",
+    "options": [
+    "William Shakespeare",
+    "Friedrich Nietzsche",
+    "Miguel de Cervantes",
+    "Jorge Luis Borges"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿En qué siglo vivió el pintor italiano Rafael?",
+    "correctAnswer": "Siglo XVI",
+    "options": [
+    "Siglo XVI",
+    "Siglo XVII",
+    "Siglo XVIII",
+    "Siglo XIX"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Quién escribió la novela 'Ulises'?",
+    "correctAnswer": "James Joyce",
+    "options": [
+    "James Joyce",
+    "Fyodor Dostoevsky",
+    "Gabriel García Márquez",
+    "Jane Austen"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Arte"
+    },
+    {
+    "question": "¿Cuál es la escultura más famosa de Michelangelo?",
+    "correctAnswer": "La piedad",
+    "options": [
+    "La piedad",
+    "David",
+    "El pensador",
+    "El beso"
+    ],
+    "points": 20,
+    "difficulty": "Difícil",
+    "category": "Arte"
+    }
+]

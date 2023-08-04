@@ -63,6 +63,18 @@ describe('Categories tests:', () => {
             .expect( async (response) => {
                 categories.map((category, key) => {
                     expect(response.body[key].name).toBe(category)
+                    expect(response.body[key].slug).toBe(
+                        category
+                        .toLowerCase()
+                        .normalize('NFD')
+                        .replace(/[\u0300-\u036f]/g, '')
+                        .replace(/\s+/g, '-')
+                        .trim()
+                    )
+                    expect(response.body[key].imgUrl).toBe(
+                        `/categories/${response.body[key].slug}.svg`
+                    )
+
                 })
             })
         })

@@ -16,7 +16,7 @@ export async function getRandomQuestion(category?: string): Promise<Question | n
     const categoryId = category ? 
         await Category.findOne({
             where: {
-                name: category
+                slug: category
             }
         })
         :
@@ -36,7 +36,7 @@ export async function getRandomQuestion(category?: string): Promise<Question | n
             include:  [
                 {
                     model: Category,
-                    attributes: ['name']
+                    attributes: ['name', 'imgUrl']
                 }
             ]
         })
@@ -47,7 +47,7 @@ export async function getRandomQuestion(category?: string): Promise<Question | n
             include:  [
                 {
                     model: Category,
-                    attributes: ['name']
+                    attributes: ['name', 'imgUrl']
                 }
             ]
         })
@@ -64,7 +64,7 @@ export async function getQuestionById(questionId: number): Promise<IQuestionWith
         include:  [
             {
                 model: Category,
-                attributes: ['name']
+                attributes: ['name', 'imgUrl']
             }
         ]
     })

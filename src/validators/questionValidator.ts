@@ -8,9 +8,12 @@ import { IQuestion } from '../definitions'
 import { categories } from '../seeds/categorySeed'
 
 export class QuestionValidationError extends Error {
-    constructor(message: string) {
+    question: IQuestion
+
+    constructor(message: string, question: IQuestion) {
         super(message)
         this.name = 'Question Validation Error'
+        this.question = question
     }
 }
 
@@ -18,31 +21,37 @@ export const validateQuestion = (questionData: IQuestion) => {
 
     const validateQuestionText = (questionText: string) => {
         if (!questionText || questionText.trim() === '') {
-            throw new QuestionValidationError('La pregunta es requerida')
+            throw new QuestionValidationError('La pregunta es requerida', questionData)
         }
     }
 
     const validateCorrectAnswer = (correctAnswer: string) => {
         if (!correctAnswer || correctAnswer.trim() === '') {
-            throw new QuestionValidationError('La respuesta correcta es requerida')
+            throw new QuestionValidationError('La respuesta correcta es requerida', questionData)
         }
     }
 
     const validateOptions = (options: string[]) => {
         if (!Array.isArray(options) || options.length !== 4) {
-            throw new QuestionValidationError('Las opciones deben ser un array de 4 cadenas')
+            throw new QuestionValidationError('Las opciones deben ser un array de 4 cadenas', questionData)
         }
     }
 
-    const validatePoints = (points: number) => {
-        if (!Number.isInteger(points) || points < 10 || points > 20) {
-            throw new QuestionValidationError('La puntuacion debe ser de 10, 15 o 20')
-        }
-    }
-
-    const validateDifficulty = (difficulty: string) => {
+    const validateDifficulty = (difficulty: string, points: number) => {
         if (!['Fácil', 'Moderado', 'Difícil'].includes(difficulty)) {
-            throw new QuestionValidationError('La dificultad debe ser "Fácil", "Moderado" o "Difícil"')
+            throw new QuestionValidationError('La dificultad debe ser "Fácil", "Moderado" o "Difícil"', questionData)
+        }
+
+        if (difficulty === 'Fácil' && points != 10) {
+            throw new QuestionValidationError('La dificultad "Fácil" debe otorgar 10 puntos', questionData)
+        }
+
+        if (difficulty === 'Moderado' && points != 15) {
+            throw new QuestionValidationError('La dificultad "Moderado" debe otorgar 15 puntos', questionData)
+        }
+
+        if (difficulty === 'Difícil' && points != 20) {
+            throw new QuestionValidationError('La dificultad "Difícil" debe otorgar 20 puntos', questionData)
         }
     }
 
@@ -54,14 +63,13 @@ export const validateQuestion = (questionData: IQuestion) => {
             }
         })
         if(matchs === 0) {
-            throw new QuestionValidationError(`La categoría debe ser una de las siguientes: ${categories}`)
+            throw new QuestionValidationError(`La categoría debe ser una de las siguientes: ${categories}`, questionData)
         }
     }
 
     validateQuestionText(questionData.question)
     validateCorrectAnswer(questionData.correctAnswer)
     validateOptions(questionData.options)
-    validatePoints(questionData.points)
-    validateDifficulty(questionData.difficulty)
+    validateDifficulty(questionData.difficulty, questionData.points)
     validateCategory(questionData.category)  
 }

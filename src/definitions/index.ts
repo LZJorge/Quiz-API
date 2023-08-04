@@ -41,5 +41,6 @@ export interface IQuestion {
 export interface IQuestionWithCategory extends Question {
     Category?: {
         name: string
+        imgUrl: string
     }
 }
