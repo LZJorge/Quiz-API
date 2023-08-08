@@ -5,8 +5,9 @@
  */
 
 import { Request, Response } from 'express'
-import User from '../models/User'
 import { IUserRequest } from '../definitions'
+import UserService from '../services/userService'
+import { RESPONSE_CODE } from '../definitions'
 import path from 'path'
 import fs from 'fs'
 
@@ -21,19 +22,15 @@ class UserController {
 		const { username, password } = req.body
 
 		try {			
-			const user = User.build({
-				username,
-				password
-			})
+			await UserService.createUser(username, password)
 
-			await user.save()
 			res.status(200).json({
-				code: 'success',
+				code: RESPONSE_CODE.SUCCESS,
 				message: 'Usuario creado satisfactoriamente'
 			})
 		} catch (error: any) {
 			res.status(400).json({
-				code: 'error',
+				code: RESPONSE_CODE.ERROR,
 				message: error.message
 			})
 		}
@@ -50,13 +47,7 @@ class UserController {
 		const { id } = req.user
 
 		try {
-			const user = await User.findByPk(id)
-
-			if(user) {
-				await user.update({
-					password: newPassword,
-				})
-			}
+			await UserService.updateUserPassword(id, newPassword)
 
 			res.status(200).json({
 				code: 'success',
@@ -64,7 +55,7 @@ class UserController {
 			})
 		} catch(error: any) {
 			res.status(500).json({
-				code: 'error',
+				code: RESPONSE_CODE.ERROR,
 				message: error.message
 			})
 		}
@@ -81,21 +72,15 @@ class UserController {
 		const { id } = req.user
 
 		try {
-			const user = await User.findByPk(id)
-
-			if(user) {
-				await user.update({
-					avatar: newAvatar
-				})
-			}
+			await UserService.updateUserAvatar(id, newAvatar)
 
 			res.status(200).json({
-				code: 'success',
+				code: RESPONSE_CODE.SUCCESS,
 				message: 'Se actualizó el avatar'
 			})
 		} catch(error: any) {
 			res.status(500).json({
-				code: 'error',
+				code: RESPONSE_CODE.ERROR,
 				message: error.message
 			})
 		}
@@ -112,23 +97,25 @@ class UserController {
 
 		try {
 			if (id && id === userID) {
-				await User.destroy({
-					where: {
-						id: userID
-					}
-				})
+				await UserService.deleteUser
 		
 				req.session.destroy(() => {
 					res.status(200).json({
-						code: 'success',
+						code: RESPONSE_CODE.SUCCESS,
 						message: 'El usuario ha sido eliminado'
 					})
 				})
 			} else {
-				res.status(403).send('No tienes permiso para eliminar este usuario')
+				res.status(403).json({
+					code: RESPONSE_CODE.ERROR,
+					message:'No tienes permiso para eliminar este usuario'
+				})
 			}
 		} catch (error) {
-			res.status(404).send(error)
+			res.status(404).json({
+				code: RESPONSE_CODE.ERROR,
+				message:'No tienes permiso para eliminar este usuario'
+			})
 		}
 	}
 
@@ -155,7 +142,7 @@ class UserController {
 			})
 		} catch(err) {
 			res.status(500).json({
-				code: 'error',
+				code: RESPONSE_CODE.ERROR,
 				message: 'Ha ocurrido un error'
 			})
 		}
@@ -168,22 +155,12 @@ class UserController {
 	 */
 	public static async getLeaderboard (req: Request, res: Response): Promise<void> {
 		try {
-			const leaderboard = await User.findAll({
-				order: [['score', 'DESC']],
-				limit: 10,
-				attributes: [
-					'username',
-					'avatar',
-					'score',
-					'successResponses',
-					'createdAt'
-				]
-			})
+			const leaderboard = await UserService.getLeaderboard()
 
 			res.status(200).json(leaderboard)
 		} catch(error: any) {
 			res.status(422).json({
-				code: 'error',
+				code: RESPONSE_CODE.ERROR,
 				message: error.message
 			})
 		}
@@ -199,11 +176,18 @@ class UserController {
 
 		fs.readdir(avatarsDir, (err, files) => {
 			if (err) {
-				res.status(500).send('Error al leer la carpeta de avatares')
-			} else {
-			const avatars = files.map((file) => `/avatars/${file}`)
-				res.status(200).json(avatars)
+				res.status(500).json({
+					code: RESPONSE_CODE.ERROR,
+					message: 'Error al leer la carpeta de avatares'
+				})
+				return
 			}
+
+			const avatars = files.map((file) => `/avatars/${file}`)
+			res.status(200).json({
+				code: RESPONSE_CODE.SUCCESS,
+				avatars
+			})
 		})
 	}
 }

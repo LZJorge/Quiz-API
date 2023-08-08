@@ -7,6 +7,7 @@
 import { Request, Response, NextFunction } from 'express'
 import passport from '../config/passport'
 import User from '../models/User'
+import { RESPONSE_CODE } from '../definitions'
 
 class AuthController {
 
@@ -21,7 +22,7 @@ class AuthController {
                 res.status(500).json('Ha ocurrido un error')
             } else if (!user) {
                 res.status(401).json({
-                    code: 'error',
+                    code: RESPONSE_CODE.ERROR,
                     message: 'Usuario o contraseña incorrectos'
                 })
             } else {
@@ -45,13 +46,13 @@ class AuthController {
         if(req.session) {
             req.session.destroy(()=> {
                 res.status(200).send({
-                    code: 'success',
+                    code: RESPONSE_CODE.SUCCESS,
                     message: 'Se cerró la sesión'
                 })
             })
         } else {
             res.status(400).json({
-                code: 'error',
+                code: RESPONSE_CODE.ERROR,
                 message: 'No hay ninguna sesión activa'
             })
         }
@@ -68,7 +69,7 @@ class AuthController {
         }
 
         res.status(401).json({
-            code: 'error',
+            code: RESPONSE_CODE.ERROR,
             message: 'Tienes que estar autenticado'
         })
     }

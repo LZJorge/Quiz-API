@@ -12,15 +12,10 @@ import fs from 'fs'
 import path from 'path'
 import Router from './routes/router'
 import sequelize from './config/db'
-import User from './models/User'
-import Question from './models/Question'
-import Category from './models/Category'
 import session from 'express-session'
+import sessionConfig from './config/session'
 import cookieParser from 'cookie-parser'
 import passport from './config/passport'
-import SQLiteStoreFactory from 'connect-sqlite3'
-
-const SQLiteStore = SQLiteStoreFactory(session)
 
 config()
 
@@ -51,18 +46,7 @@ class App {
 
 		this.app.use(Express.static(path.join(__dirname, '../public')))
 
-		this.app.use(session({
-			secret: 'keyboard cat',
-			resave: true,
-			saveUninitialized: true,
-			store: new SQLiteStore({ db: './db.sqlite3' }) as any,
-			cookie: {
-				sameSite: false,
-				httpOnly: process.env.NODE_ENV === 'production' ? false : true,
-				secure: process.env.NODE_ENV === 'production' ? true : false,
-				maxAge: 1000 * 60 * 60 * 24,
-			}
-		}))
+		this.app.use(session(sessionConfig))
 
 		this.app.use(cors({
 			origin: process.env.APP_DOMAIN || 'http://localhost:5173',
@@ -76,9 +60,6 @@ class App {
 
 	private async setDatabases(): Promise<void> {
 		await sequelize.sync()
-		await User.sync()
-		await Category.sync()
-		await Question.sync()
 	}
 
 	private setRoutes(): void {

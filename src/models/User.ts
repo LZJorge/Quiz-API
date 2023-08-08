@@ -7,6 +7,7 @@
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '../config/db'
 import bcrypt from 'bcrypt'
+import { USER_DEFAULT_AVATAR } from '../definitions'
 
 class User extends Model {
 	public id!: string
@@ -47,7 +48,7 @@ User.init({
 
 	avatar: {
 		type: DataTypes.STRING,
-		defaultValue: '/avatars/avatar-00.svg'
+		defaultValue: USER_DEFAULT_AVATAR
 	},
 
 	password: {

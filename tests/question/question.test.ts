@@ -225,7 +225,7 @@ describe('Questions tests:', () => {
 
         it('Should return random question by especific category', async () => {
             const response = await request
-            .get('/question/Deportes')
+            .get('/question/deportes')
             .set('Cookie', cookie)
 
             .expect(200)
@@ -251,7 +251,19 @@ describe('Questions tests:', () => {
 
         it('Should return same question if has active question of same especific category', async () => {
             await request
-            .get('/question/Deportes')
+            .get('/question/deportes')
+            .set('Cookie', cookie)
+
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+            .expect( (response) => {
+                expect(response.body).toMatchObject(previousQuestion)
+            })    
+        })
+
+        it('Should return same question if has active question and category param is not normalized ', async () => {
+            await request
+            .get('/question/dEpÓrtEs')
             .set('Cookie', cookie)
 
             .expect(200)

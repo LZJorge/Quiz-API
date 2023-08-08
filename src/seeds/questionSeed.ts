@@ -8,12 +8,14 @@ import { IQuestion } from '../definitions'
 import { QuestionValidationError, validateQuestion } from '../validators/questionValidator'
 import Category from '../models/Category'
 
+async function validateData(data: IQuestion[]): Promise<void> {
+    for (const questionData of data) {
+        validateQuestion(questionData)
+    }
+}
+
 async function loadData(data: IQuestion[]): Promise<void> {
     try {
-        for (const questionData of data) {
-            validateQuestion(questionData)
-        }
-
         for (const questionData of data) {
             const { 
                 question, 
@@ -50,11 +52,23 @@ async function loadData(data: IQuestion[]): Promise<void> {
 
 export async function loadQuestionData(): Promise<void> {
     try {
-        await loadData(sportsData)
-        await loadData(musicData)
-        await loadData(historyData)
-        await loadData(artData)
-        await loadData(programmingData)
+        await Promise.all([
+            validateData(sportsData),
+            validateData(musicData),
+            validateData(historyData),
+            validateData(artData),
+            validateData(programmingData)
+        ])
+          
+        console.log('All questions verified ✅')
+          
+        await Promise.all([
+            loadData(sportsData),
+            loadData(musicData),
+            loadData(historyData),
+            loadData(artData),
+            loadData(programmingData)
+        ])
         
         console.log('Questions loaded successfully ✅')
     } catch(error) {
@@ -62,11 +76,18 @@ export async function loadQuestionData(): Promise<void> {
             console.log('❌', error.name, '❌')
             console.log(error.message, '\n')
             console.log(error.question)
-            console.log('❗Questions not loaded, close server, fix data and try again')
 
-            await Question.destroy({
-                where: {}, truncate: true
-            })
+            await Promise.all([
+                Question.destroy({
+                    where: {}, truncate: true
+                }),
+
+                Category.destroy({
+                    where: {}, truncate: true
+                })
+            ])
+
+            console.log('❗Questions not loaded, close server, fix data and try again')
         }
     }
 }

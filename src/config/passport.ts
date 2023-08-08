@@ -6,6 +6,7 @@
 
 import passport from 'passport'
 import User from '../models/User'
+import UserService from '../services/userService'
 import { Strategy as LocalStrategy } from 'passport-local'
 
 passport.use(
@@ -17,11 +18,7 @@ passport.use(
 
         async (username: string, password: string, done) => {
             try {
-                const user = await User.findOne({
-                    where: { 
-                        username: username 
-                    }
-                })
+                const user = await UserService.getUserByUsername(username)
 
                 if(!user) {
                     return done(null, false, {

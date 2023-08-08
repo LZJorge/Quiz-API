@@ -7,13 +7,11 @@
 
 import { Sequelize } from 'sequelize'
 import SQLite from 'sqlite3'
-
-const { NODE_ENV } = process.env
-const storage = NODE_ENV === 'test' ? ':memory:' : 'db.sqlite3'
+import { DB_STORAGE } from '../definitions'
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: storage,
+    storage: DB_STORAGE,
     logging: false,
     dialectOptions: {
         mode: SQLite.OPEN_READWRITE | SQLite.OPEN_CREATE,

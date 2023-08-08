@@ -62,8 +62,8 @@ describe('Categories tests:', () => {
             .expect('Content-Type', /application\/json/)
             .expect( async (response) => {
                 categories.map((category, key) => {
-                    expect(response.body[key].name).toBe(category)
-                    expect(response.body[key].slug).toBe(
+                    expect(response.body.categories[key].name).toBe(category)
+                    expect(response.body.categories[key].slug).toBe(
                         category
                         .toLowerCase()
                         .normalize('NFD')
@@ -71,10 +71,9 @@ describe('Categories tests:', () => {
                         .replace(/\s+/g, '-')
                         .trim()
                     )
-                    expect(response.body[key].imgUrl).toBe(
-                        `/categories/${response.body[key].slug}.svg`
+                    expect(response.body.categories[key].imgUrl).toBe(
+                        `/categories/${response.body.categories[key].slug}.svg`
                     )
-
                 })
             })
         })

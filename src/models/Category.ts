@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '../config/db'
-import { loadData } from '../seeds/categorySeed'
+import { loadCategoryData } from '../seeds/categorySeed'
 
 class Category extends Model {
     public id!: number
@@ -47,7 +47,7 @@ Category.init({
         afterSync: async () => {
             const count = await Category.count()
             if(count === 0) {
-                await loadData()
+                await loadCategoryData()
             }
         }
     }

@@ -315,7 +315,7 @@ describe('User tests:', () => {
             .expect(200)
             .expect('Content-Type', /application\/json/)
             .expect( (response) => {
-                expect(response.body.length).toEqual(getAvatarsCount())
+                expect(response.body.avatars.length).toEqual(getAvatarsCount())
             })
         })
     })

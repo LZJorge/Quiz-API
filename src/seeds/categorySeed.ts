@@ -9,7 +9,7 @@ export const categories: string[] = [
     'Programación'
 ]
 
-export async function loadData(): Promise<void> {
+export async function loadCategoryData(): Promise<void> {
     categories.forEach( async (category) => {
         try {
             category = category.trim()

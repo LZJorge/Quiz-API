@@ -20,8 +20,6 @@
       - [Get question](#get-question)
   - [Project Status](#project-status)
   - [Room for Improvement](#room-for-improvement)
-      - [Room for improvement:](#room-for-improvement-1)
-      - [To do:](#to-do)
   - [Important Information](#important-information)
   - [Contact](#contact)
 
@@ -70,7 +68,7 @@ npm start
 > You can run api tests with
 
 ```bash
-# Use this after to test api
+# Use this to test api
 npm test
 ```
 
@@ -177,12 +175,8 @@ content-type: application/json
 
 ## Room for Improvement
 
-#### Room for improvement:
 - Improvement of documentation
 - Add support for other database engines
-
-#### To do:
-- Categorization of questions
 
 
 ## Important Information

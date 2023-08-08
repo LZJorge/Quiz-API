@@ -4,7 +4,8 @@
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
 import { Request, Response } from 'express'
-import Category from '../models/Category'
+import CategoryService from '../services/categoryService'
+import { RESPONSE_CODE } from '../definitions'
 
 class CategoryController {
 
@@ -15,14 +16,15 @@ class CategoryController {
      */
     public static async getCategories(req: Request, res: Response): Promise<void> {
         try {
-            const categories = await Category.findAll({
-                attributes: ['id', 'name', 'imgUrl', 'slug']
-            })
+            const categories = await CategoryService.getAllCategories()
 
-            res.status(200).json(categories)
+            res.status(200).json({
+                code: RESPONSE_CODE.SUCCESS,
+                categories
+            })
         } catch(error) {
             res.status(500).json({
-                code: 'error',
+                code: RESPONSE_CODE.ERROR,
                 message: 'Ocurrió un error al obtener las categorias'
             })
         }
