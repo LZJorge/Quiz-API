@@ -44,7 +44,7 @@ class App {
 		this.app.use(Express.json())
 		this.app.use(cookieParser())
 
-		this.app.use(Express.static(path.join(__dirname, '../public')))
+		this.app.use(Express.static(path.join(__dirname, process.env.NODE_ENV === 'production' ? '../../public' : '../public')))
 
 		this.app.use(session(sessionConfig))
 
