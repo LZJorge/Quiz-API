@@ -4,10 +4,9 @@ import User from '../../src/models/User'
 describe('Authentication tests:', () => {
     
     /**
-     * The cookie stores session cookie on user login
-     * Cookie is used for persisting session between request
+     * token is used for persisting session between request
      */
-    let cookie: string
+    let token: string
 
     beforeAll( async () => {
         await User.create({
@@ -51,11 +50,10 @@ describe('Authentication tests:', () => {
             .expect(200)
             .expect('Content-Type', /application\/json/)
             .expect( (response) => {
-                expect(response.headers['set-cookie']).toBeDefined()
-                expect(response.headers['set-cookie'][0]).toMatch(/^connect.sid=/)
+                expect(response.body.token).toBeDefined()
             })
 
-            cookie = response.headers['set-cookie']
+            token = response.headers['set-token']
         })
     })
 
@@ -68,14 +66,14 @@ describe('Authentication tests:', () => {
         it('should logout user', async () => {
             await request
             .get('/user/logout')
-            .set('Cookie', cookie)
+            .set('token', token)
             .set('Accept', 'application/json')
 
             .expect(200)
             .expect('Content-Type', /application\/json/)            
         })
 
-        it('will not logout if don\'t send session cookie', async () => {
+        it('will not logout if don\'t send session token', async () => {
             await request
             .get('/user/logout')
             .set('Accept', 'application/json')

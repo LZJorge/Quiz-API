@@ -6,8 +6,14 @@
 
 import { Request, Response, NextFunction } from 'express'
 import passport from '../config/passport'
-import User from '../models/User'
+import jwt from 'jsonwebtoken'
+import userService from '../services/userService'
 import { RESPONSE_CODE } from '../definitions'
+import { compare } from 'bcrypt'
+import User from '../models/User'
+import { config } from "dotenv";
+
+config();
 
 class AuthController {
 
@@ -16,25 +22,50 @@ class AuthController {
      * @url '/auth/login'
      * @method POST
      */
-    public static authenticateUser (req: Request, res: Response): void {
-        passport.authenticate('local', (err: Error, user: User, info: object): void => {
-            if (err) {
-                res.status(500).json('Ha ocurrido un error')
-            } else if (!user) {
-                res.status(401).json({
-                    code: RESPONSE_CODE.ERROR,
-                    message: 'Usuario o contraseña incorrectos'
-                })
-            } else {
-                req.login(user, (err: Error) => {
-                    if (err) {
-                        res.status(400).json(err)
-                    } else {
-                        res.status(200).json(info)
-                    }
-                })
+    public static async authenticateUser (req: Request, res: Response): Promise<Response> {
+        try {
+            const { username, password } = req.body;
+            const user = await userService.getUserByUsername(username);
+
+            if (!user) {
+                return res.status(401).json({
+                  code: RESPONSE_CODE.ERROR,
+                  message: "Usuario o contraseña incorrectos",
+                });
             }
-        })(req, res)
+
+            const passwordMatch = await compare(password, user.password);
+
+            if (!passwordMatch) {
+                return res.status(401).json({
+                  code: RESPONSE_CODE.ERROR,
+                  message: "Usuario o contraseña incorrectos",
+                });
+            }
+
+            const token = jwt.sign(
+              {
+                id: user.id,
+                username: user.username,
+              },
+              `${process.env.SECRET_KEY}`,
+              {
+                expiresIn: "24h",
+                algorithm: "HS256",
+              }
+            );
+            
+            return res.status(200).json({
+              code: RESPONSE_CODE.SUCCESS,
+              message: "Se ha iniciado la sesión",
+              token
+            });
+        } catch (error) {
+            console.log(error);
+            return res
+              .status(500)
+              .json({ code: RESPONSE_CODE.ERROR, message: "Error al iniciar la sesión", error });
+        }
     }
 
     /**
@@ -64,14 +95,24 @@ class AuthController {
      * @method any
      */
     public static isAuthenticated (req: Request, res: Response, next: NextFunction): void {
-        if(req.isAuthenticated()) {
-            return next()
-        }
+        passport.authenticate('jwt', { session: false },  (err: any, user: typeof User, info: any) => {
+            if (err) {
+                return res.status(401).json({
+                    code: RESPONSE_CODE.ERROR,
+                    message: 'Token no valido'
+                })
+            }
+            if (!user) {
+                return res.status(401).json({
+                    code: RESPONSE_CODE.ERROR,
+                    message: 'No hay token'
+                })
+            }
 
-        res.status(401).json({
-            code: RESPONSE_CODE.ERROR,
-            message: 'Tienes que estar autenticado'
-        })
+            req.user = user
+
+            return next();
+        })(req, res, next)
     }
 }
 

@@ -48,11 +48,13 @@ class App {
 
 		this.app.use(session(sessionConfig))
 
-		this.app.use(cors({
-			origin: process.env.APP_DOMAIN || 'http://localhost:5173',
-			methods: ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
-			credentials: true
-		}))
+		this.app.use(
+			cors({
+				origin: [process.env.APP_DOMAIN!],
+				methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
+				credentials: true,
+			})
+    );
 		
 		this.app.use(passport.initialize())
 		this.app.use(passport.session())
@@ -68,7 +70,7 @@ class App {
 
 	public async startServer(): Promise<void> {
 		await this.setDatabases()
-		this.server = await this.app.listen(this.port)
+		this.server = this.app.listen(this.port)
 
 		console.log(`\n🚀 Server running on http://localhost:${this.port} in ${process.env.NODE_ENV} mode 🚀`)
 		console.log(`📅 Started at ${new Date()}`)

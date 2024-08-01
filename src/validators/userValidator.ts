@@ -19,6 +19,7 @@ const sanitizeString = (value: string) => {
 
 export const validateCreateUser = [
 	body('username')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('El nombre de usuario es obligatorio')
@@ -41,6 +42,7 @@ export const validateCreateUser = [
         }),
 
 	body('password')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('La contraseña es obligatoria')
@@ -50,6 +52,7 @@ export const validateCreateUser = [
         .custom(sanitizeString),
 
 	body('passwordConfirm')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('La confirmación de contraseña es obligatoria')
@@ -74,6 +77,7 @@ export const validateCreateUser = [
 
 export const validateUpdateUserPassword = [
     body('password')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('La contraseña es obligatoria')
@@ -82,6 +86,7 @@ export const validateUpdateUserPassword = [
         .withMessage('La contraseña debe tener mínimo 8 caracteres'),
 
 	body('newPassword')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('La nueva contraseña es obligatoria')
@@ -91,6 +96,7 @@ export const validateUpdateUserPassword = [
         .custom(sanitizeString),
 
     body('newPasswordConfirm')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('La confirmación de contraseña es obligatoria')
@@ -132,6 +138,7 @@ const avatarRegex = /^\/avatars\/avatar-\d{2}\.svg$/
 
 export const validateUserAvatar = [
     body('newAvatar')
+        .trim()
         .exists()
         .notEmpty()
         .isString()
@@ -145,6 +152,7 @@ export const validateUserAvatar = [
 
 export const validateDeleteUser = [
     body('password')
+        .trim()
         .exists()
         .notEmpty()
         .withMessage('La contraseña es obligatoria')
@@ -153,6 +161,7 @@ export const validateDeleteUser = [
         .withMessage('La contraseña debe tener mínimo 8 caracteres'),
 
     body('userID')
+        .trim()
         .exists()
         .notEmpty()
         .isString()
