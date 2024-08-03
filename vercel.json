@@ -7,7 +7,7 @@
       "config": { "includeFiles": ["dist/**"] }
     },
     {
-      "src": "./public/*",
+      "src": "public/*",
       "use": "@vercel/static"
     }
   ],
@@ -16,5 +16,6 @@
       "src": "/(.*)",
       "dest": "dist/src/index.js"
     }
-  ]
+  ],
+  "outputDirectory": "public"
 }
