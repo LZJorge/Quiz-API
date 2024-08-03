@@ -4,6 +4,7 @@
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
 
+import { totalmem } from 'os';
 import { 
     IUser, 
     UpdatedScore, 
@@ -217,6 +218,7 @@ class UserService {
       await user.update(
         {
           activeQuestion: questionId,
+          totalQuestions: user.totalQuestions + 1,
         }
       );
 

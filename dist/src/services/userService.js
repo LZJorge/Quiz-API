@@ -194,6 +194,7 @@ class UserService {
                 }
                 yield user.update({
                     activeQuestion: questionId,
+                    totalQuestions: user.totalQuestions + 1,
                 });
                 return true;
             }
