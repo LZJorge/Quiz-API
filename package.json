@@ -9,7 +9,7 @@
     "url": "https://github.com/LZJorge/Quiz-API.git"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node build/src/index.js",
+    "start": "cross-env NODE_ENV=production node dist/src/index.js",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
