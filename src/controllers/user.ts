@@ -10,6 +10,7 @@ import UserService from '../services/userService'
 import { RESPONSE_CODE } from '../definitions'
 import path from 'path'
 import fs from 'fs'
+import userService from '../services/userService';
 
 class UserController {
 
@@ -124,16 +125,16 @@ class UserController {
 	 * @url '/user/current'
 	 * @method GET
 	 */
-	public static getCurrentUser(req: IUserRequest, res: Response): void {
+	public static async getCurrentUser(req: IUserRequest, res: Response): Promise<void> {
 		try {
-			const user = {
-				id: req.user.id,
-				username: req.user.username,
-				avatar: req.user.avatar,
-				score: req.user.score,
-				totalQuestions: req.user.totalQuestions,
-				successResponses: req.user.successResponses,
-				createdAt: req.user.createdAt
+			const user = await userService.getUser(req.user.id);
+
+			if (!user) {
+				res.status(400).json({
+					code: RESPONSE_CODE.ERROR,
+					message: "Error al obtener el usuario",
+				});
+				return;
 			}
 
 			res.status(200).json({
@@ -172,7 +173,7 @@ class UserController {
 	 * @method GET
 	 */
 	public static getAvatars (req: Request, res: Response): void {
-		const avatarsDir = path.join(__dirname, '../../public', 'avatars')
+		const avatarsDir = path.join(__dirname, '../../../public', 'avatars')
 
 		fs.readdir(avatarsDir, (err, files) => {
 			if (err) {

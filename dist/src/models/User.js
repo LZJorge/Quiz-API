@@ -29,10 +29,7 @@ User.init({
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
-        unique: true,
-        validate: {
-            isUUID: 4
-        }
+        unique: true
     },
     username: {
         type: sequelize_1.DataTypes.STRING,

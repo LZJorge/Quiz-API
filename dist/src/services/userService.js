@@ -19,7 +19,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const definitions_1 = require("../definitions");
 const User_1 = __importDefault(require("../models/User"));
-const sequelize_1 = __importDefault(require("sequelize"));
 class UserService {
     /**
      * @description
@@ -31,7 +30,7 @@ class UserService {
             try {
                 const user = User_1.default.build({
                     username,
-                    password
+                    password,
                 });
                 yield user.save();
                 return true;
@@ -47,16 +46,36 @@ class UserService {
      * Gets user by his username
      * This is used to log in users
      */
+    getUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield User_1.default.findByPk(id);
+                if (!user) {
+                    throw new Error("Usuario no encontrado");
+                }
+                return user;
+            }
+            catch (error) {
+                return undefined;
+            }
+        });
+    }
+    /**
+     * @description
+     *
+     * Gets user by his username
+     * This is used to log in users
+     */
     getUserByUsername(username) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const user = yield User_1.default.findOne({
                     where: {
-                        username: username
-                    }
+                        username: username,
+                    },
                 });
                 if (!user) {
-                    throw new Error('Usuario no encontrado');
+                    throw new Error("Usuario no encontrado");
                 }
                 return user;
             }
@@ -74,7 +93,7 @@ class UserService {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield User_1.default.findByPk(id);
             if (!user) {
-                throw new Error('Ha ocurrido un error al actualizar la contraseña');
+                throw new Error("Ha ocurrido un error al actualizar la contraseña");
             }
             yield user.update({
                 password: newPassword,
@@ -91,10 +110,10 @@ class UserService {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield User_1.default.findByPk(id);
             if (!user) {
-                throw new Error('Ha ocurrido un error al actualizar el avatar');
+                throw new Error("Ha ocurrido un error al actualizar el avatar");
             }
             yield user.update({
-                avatar: newAvatar
+                avatar: newAvatar,
             });
             return true;
         });
@@ -108,12 +127,12 @@ class UserService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const leaderboard = yield User_1.default.findAll({
-                    order: [['score', 'DESC']],
+                    order: [["score", "DESC"]],
                     limit: definitions_1.LEADERBOARD_SIZE,
-                    attributes: definitions_1.LEADERBOARD_USER_ATTRIBUTES
+                    attributes: definitions_1.LEADERBOARD_USER_ATTRIBUTES,
                 });
                 if (!leaderboard) {
-                    throw new Error('No se puedo obtener la tabla');
+                    throw new Error("No se puedo obtener la tabla");
                 }
                 return leaderboard;
             }
@@ -132,26 +151,30 @@ class UserService {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield User_1.default.findOne({
                 where: {
-                    id: userId
-                }
+                    id: userId,
+                },
             });
             if (!user) {
-                throw new Error('Usuario no encontrado');
+                throw new Error("Usuario no encontrado");
             }
-            const updatedScore = success ? user.score + points : Math.max(user.score - 10, 0);
-            const updatedSuccessResponses = success ? user.successResponses + 1 : user.successResponses;
+            const updatedScore = success
+                ? user.score + points
+                : Math.max(user.score - 10, 0);
+            const updatedSuccessResponses = success
+                ? user.successResponses + 1
+                : user.successResponses;
             yield User_1.default.update({
                 successResponses: updatedSuccessResponses,
                 activeQuestion: 0,
                 score: updatedScore,
             }, {
                 where: {
-                    id: userId
-                }
+                    id: userId,
+                },
             });
             return {
                 updatedScore,
-                updatedSuccessResponses
+                updatedSuccessResponses,
             };
         });
     }
@@ -165,13 +188,12 @@ class UserService {
     updateActiveQuestion(userId, questionId) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield User_1.default.update({
-                    totalQuestions: sequelize_1.default.literal('totalQuestions + 1'),
-                    activeQuestion: questionId
-                }, {
-                    where: {
-                        id: userId
-                    }
+                const user = yield User_1.default.findByPk(userId);
+                if (!user) {
+                    throw new Error("Usuario no encontrado");
+                }
+                yield user.update({
+                    activeQuestion: questionId,
                 });
                 return true;
             }
@@ -190,11 +212,11 @@ class UserService {
             try {
                 const deletedUsers = yield User_1.default.destroy({
                     where: {
-                        id: userID
-                    }
+                        id: userID,
+                    },
                 });
                 if (deletedUsers === 0) {
-                    throw new Error('No se pudo eliminar al usuario');
+                    throw new Error("No se pudo eliminar al usuario");
                 }
                 return true;
             }

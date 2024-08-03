@@ -48,11 +48,19 @@ class App {
 
 		this.app.use(
 			cors({
-				origin: [process.env.APP_DOMAIN!],
+				origin: [`${process.env.APP_DOMAIN}`],
 				methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
 				credentials: true,
+				allowedHeaders: ["Content-Type", "Accept", "Authorization"],
 			})
-    );
+		);
+
+		this.app.use(function (req, res, next) {
+			res.header("Access-Control-Allow-Origin", `${process.env.APP_DOMAIN}`);
+			res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, OPTIONS, HEAD, DELETE");
+			res.header("Access-Control-Allow-Headers", "X-Requested-With");
+			next();
+		});
 		
 		this.app.use(passport.initialize())
 		this.app.use(passport.session())

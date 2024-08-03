@@ -16,6 +16,7 @@ const userService_1 = __importDefault(require("../services/userService"));
 const questionService_1 = __importDefault(require("../services/questionService"));
 const definitions_1 = require("../definitions");
 const normalizeHelper_1 = require("../helpers/normalizeHelper");
+const userService_2 = __importDefault(require("../services/userService"));
 class QuestionController {
     /**
      * Get Random Question
@@ -24,28 +25,27 @@ class QuestionController {
      */
     static getRandomQuestion(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
+            const user = yield userService_2.default.getUser(req.user.id);
+            if (!user) {
+                res.status(400).json({
+                    code: definitions_1.RESPONSE_CODE.ERROR,
+                    message: "Error al obtener el usuario",
+                });
+                return;
+            }
             /**
              * Active question != 0 means user has active question
              * So return the same question
              */
-            if (req.user.activeQuestion != 0) {
-                const question = yield questionService_1.default.getQuestionById(req.user.activeQuestion);
+            if (user.activeQuestion != 0) {
+                const question = yield questionService_1.default.getQuestionById(user.activeQuestion);
                 res.status(200).json(question);
             }
             else {
                 const question = yield questionService_1.default.getRandomQuestion();
                 if (question) {
-                    yield userService_1.default.updateActiveQuestion(req.user.id, question.id);
-                    req.user.activeQuestion = question.id;
-                    req.user.totalQuestions = req.user.totalQuestions + 1;
-                    req.login(req.user, (error) => {
-                        if (error) {
-                            next(error);
-                        }
-                        else {
-                            res.status(200).json(question);
-                        }
-                    });
+                    yield userService_1.default.updateActiveQuestion(user.id, question.id);
+                    res.status(200).json(question);
                 }
             }
         });
@@ -58,11 +58,19 @@ class QuestionController {
     static getQuestionByCategory(req, res, next) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
+            const user = yield userService_2.default.getUser(req.user.id);
+            if (!user) {
+                res.status(400).json({
+                    code: definitions_1.RESPONSE_CODE.ERROR,
+                    message: 'Error al obtener el usuario'
+                });
+                return;
+            }
             /**
              * If active questions has same category of category params returns same question
              */
-            if (req.user.activeQuestion != 0) {
-                const question = yield questionService_1.default.getQuestionById(req.user.activeQuestion);
+            if (user.activeQuestion != 0) {
+                const question = yield questionService_1.default.getQuestionById(user.activeQuestion);
                 const category = (0, normalizeHelper_1.normalizeString)(req.params.category);
                 if (question && ((_a = question.Category) === null || _a === void 0 ? void 0 : _a.slug) == category) {
                     res.status(200).json(question);
@@ -80,17 +88,8 @@ class QuestionController {
                 });
                 return;
             }
-            yield userService_1.default.updateActiveQuestion(req.user.id, question.id);
-            req.user.activeQuestion = question.id;
-            req.user.totalQuestions = req.user.totalQuestions + 1;
-            req.login(req.user, (error) => {
-                if (error) {
-                    next(error);
-                }
-                else {
-                    res.status(200).json(question);
-                }
-            });
+            yield userService_1.default.updateActiveQuestion(user.id, question.id);
+            res.status(200).json(question);
         });
     }
     /**
@@ -103,14 +102,22 @@ class QuestionController {
     static sendAnswer(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const { answer } = req.body;
-            if (req.user.activeQuestion == 0) {
+            const user = yield userService_2.default.getUser(req.user.id);
+            if (!user) {
+                res.status(400).json({
+                    code: definitions_1.RESPONSE_CODE.ERROR,
+                    message: "Error al obtener el usuario",
+                });
+                return;
+            }
+            if (user.activeQuestion == 0) {
                 res.status(400).json({
                     code: definitions_1.RESPONSE_CODE.ERROR,
                     message: 'No tienes ninguna pregunta activa'
                 });
                 return;
             }
-            const question = yield questionService_1.default.getQuestionById(req.user.activeQuestion);
+            const question = yield questionService_1.default.getQuestionById(user.activeQuestion);
             if (!question) {
                 res.status(500).send({
                     code: definitions_1.RESPONSE_CODE.ERROR,
@@ -118,28 +125,21 @@ class QuestionController {
                 });
                 return;
             }
-            req.user.activeQuestion = 0;
+            yield userService_1.default.updateActiveQuestion(user.id, 0);
             const success = answer === question.correctAnswer;
-            const { updatedScore, updatedSuccessResponses } = yield userService_1.default.updateScore(req.user.id, success, question.points);
-            req.user.score = updatedScore;
-            req.user.successResponses = updatedSuccessResponses;
-            req.login(req.user, (error) => {
-                if (error) {
-                    return next(error);
-                }
-                if (success) {
-                    res.status(200).send({
-                        code: definitions_1.QUESTION_CODE.SUCCESS,
-                        message: `¡Respuesta correcta! +${question.points} puntos 😃`
-                    });
-                }
-                else {
-                    res.status(200).send({
-                        code: definitions_1.QUESTION_CODE.FAILED,
-                        message: 'Respuesta incorrecta. -10 puntos ☹️'
-                    });
-                }
-            });
+            yield userService_1.default.updateScore(user.id, success, question.points);
+            if (success) {
+                res.status(200).send({
+                    code: definitions_1.QUESTION_CODE.SUCCESS,
+                    message: `¡Respuesta correcta! +${question.points} puntos 😃`
+                });
+            }
+            else {
+                res.status(200).send({
+                    code: definitions_1.QUESTION_CODE.FAILED,
+                    message: 'Respuesta incorrecta. -10 puntos ☹️'
+                });
+            }
         });
     }
 }

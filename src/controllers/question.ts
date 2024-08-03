@@ -9,6 +9,7 @@ import UserService from '../services/userService'
 import QuestionService from '../services/questionService'
 import { QUESTION_CODE, RESPONSE_CODE } from '../definitions'
 import { normalizeString } from '../helpers/normalizeHelper'
+import userService from '../services/userService';
 
 class QuestionController {
 
@@ -18,31 +19,31 @@ class QuestionController {
      * @method GET
      */
     public static async getRandomQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
+        const user = await userService.getUser(req.user.id);
 
+        if (!user) {
+            res.status(400).json({
+                code: RESPONSE_CODE.ERROR,
+                message: "Error al obtener el usuario",
+            });
+            return;
+        }
+        
         /**
          * Active question != 0 means user has active question
          * So return the same question
          */
-        if(req.user.activeQuestion != 0) {
-            const question = await QuestionService.getQuestionById(req.user.activeQuestion)
+        if(user.activeQuestion != 0) {
+            const question = await QuestionService.getQuestionById(user.activeQuestion)
 
-            res.status(200).json(question)
+            res.status(200).json(question);
         } else {
             const question = await QuestionService.getRandomQuestion()
     
             if(question) {
-                await UserService.updateActiveQuestion(req.user.id, question.id)
+                await UserService.updateActiveQuestion(user.id, question.id)
     
-                req.user.activeQuestion = question.id
-                req.user.totalQuestions = req.user.totalQuestions + 1
-    
-                req.login(req.user, (error) => {
-                    if(error) {
-                        next(error)
-                    } else {
-                        res.status(200).json(question)
-                    }
-                })
+                res.status(200).json(question);
             }
         }
     }
@@ -53,12 +54,21 @@ class QuestionController {
      * @method GET
      */
     public static async getQuestionByCategory(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
+        const user = await userService.getUser(req.user.id)
+
+        if(!user) {
+            res.status(400).json({
+                code: RESPONSE_CODE.ERROR,
+                message: 'Error al obtener el usuario'
+            })
+            return
+        }
         
         /**
          * If active questions has same category of category params returns same question
          */
-        if(req.user.activeQuestion != 0) {
-            const question = await QuestionService.getQuestionById(req.user.activeQuestion)
+        if(user.activeQuestion != 0) {
+            const question = await QuestionService.getQuestionById(user.activeQuestion)
             const category = normalizeString(req.params.category)
 
             if(question && question.Category?.slug == category) {
@@ -79,18 +89,9 @@ class QuestionController {
             return
         }
 
-        await UserService.updateActiveQuestion(req.user.id, question.id)
+        await UserService.updateActiveQuestion(user.id, question.id)
 
-        req.user.activeQuestion = question.id
-        req.user.totalQuestions = req.user.totalQuestions + 1
-
-        req.login(req.user, (error) => {
-            if(error) {
-                next(error)
-            } else {
-                res.status(200).json(question)
-            }
-        })
+        res.status(200).json(question)
     }
 
     /**
@@ -102,8 +103,17 @@ class QuestionController {
      */
     public static async sendAnswer(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
         const { answer } = req.body
+        const user = await userService.getUser(req.user.id);
 
-        if(req.user.activeQuestion == 0) {
+        if (!user) {
+            res.status(400).json({
+                code: RESPONSE_CODE.ERROR,
+                message: "Error al obtener el usuario",
+            });
+            return;
+        }
+
+        if(user.activeQuestion == 0) {
             res.status(400).json({
                 code: RESPONSE_CODE.ERROR,
                 message: 'No tienes ninguna pregunta activa'
@@ -111,7 +121,7 @@ class QuestionController {
             return
         }
 
-        const question = await QuestionService.getQuestionById(req.user.activeQuestion)
+        const question = await QuestionService.getQuestionById(user.activeQuestion)
         if (!question) {
             res.status(500).send({
                 code: RESPONSE_CODE.ERROR,
@@ -120,34 +130,22 @@ class QuestionController {
             return
         }
 
-        req.user.activeQuestion = 0
+        await UserService.updateActiveQuestion(user.id, 0)
         const success: boolean = answer === question.correctAnswer
 
-        const { 
-            updatedScore, 
-            updatedSuccessResponses 
-        } = await UserService.updateScore(req.user.id, success, question.points)
+        await UserService.updateScore(user.id, success, question.points)
 
-        req.user.score = updatedScore
-        req.user.successResponses = updatedSuccessResponses
-
-        req.login(req.user, (error) => {
-            if (error) {
-                return next(error)
-            }
-
-            if(success) {
-                res.status(200).send({
-                    code: QUESTION_CODE.SUCCESS,
-                    message: `¡Respuesta correcta! +${question.points} puntos 😃`
-                })
-            } else {
-                res.status(200).send({
-                    code: QUESTION_CODE.FAILED,
-                    message: 'Respuesta incorrecta. -10 puntos ☹️'
-                })
-            }
-        })
+        if(success) {
+            res.status(200).send({
+                code: QUESTION_CODE.SUCCESS,
+                message: `¡Respuesta correcta! +${question.points} puntos 😃`
+            })
+        } else {
+            res.status(200).send({
+                code: QUESTION_CODE.FAILED,
+                message: 'Respuesta incorrecta. -10 puntos ☹️'
+            })
+        }
     }
 }
 

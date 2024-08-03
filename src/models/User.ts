@@ -10,19 +10,19 @@ import bcrypt from 'bcrypt'
 import { USER_DEFAULT_AVATAR } from '../definitions'
 
 class User extends Model {
-	public id!: string
-	public username!: string
-	public avatar!: string
-	public password!: string
-	public score!: number
-	public activeQuestion!: number
-	public totalQuestions!: number
-	public successResponses!: number
+  public id!: number;
+  public username!: string;
+  public avatar!: string;
+  public password!: string;
+  public score!: number;
+  public activeQuestion!: number;
+  public totalQuestions!: number;
+  public successResponses!: number;
 
-	declare public verifyPassword: (password: string) => Promise<boolean>
+  public declare verifyPassword: (password: string) => Promise<boolean>;
 
-	public readonly createdAt!: Date
-	public readonly updatedAt!: Date
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 User.init({
@@ -31,10 +31,7 @@ User.init({
 		autoIncrement: true,
 		primaryKey: true,
 		allowNull: false,
-		unique: true,
-		validate: {
-			isUUID: 4
-		}
+		unique: true
 	},
 
 	username: {

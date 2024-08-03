@@ -21,6 +21,7 @@ const userService_1 = __importDefault(require("../services/userService"));
 const definitions_1 = require("../definitions");
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
+const userService_2 = __importDefault(require("../services/userService"));
 class UserController {
     /**
      * Create User
@@ -135,27 +136,28 @@ class UserController {
      * @method GET
      */
     static getCurrentUser(req, res) {
-        try {
-            const user = {
-                id: req.user.id,
-                username: req.user.username,
-                avatar: req.user.avatar,
-                score: req.user.score,
-                totalQuestions: req.user.totalQuestions,
-                successResponses: req.user.successResponses,
-                createdAt: req.user.createdAt
-            };
-            res.status(200).json({
-                code: 'success',
-                user: user
-            });
-        }
-        catch (err) {
-            res.status(500).json({
-                code: definitions_1.RESPONSE_CODE.ERROR,
-                message: 'Ha ocurrido un error'
-            });
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield userService_2.default.getUser(req.user.id);
+                if (!user) {
+                    res.status(400).json({
+                        code: definitions_1.RESPONSE_CODE.ERROR,
+                        message: "Error al obtener el usuario",
+                    });
+                    return;
+                }
+                res.status(200).json({
+                    code: 'success',
+                    user: user
+                });
+            }
+            catch (err) {
+                res.status(500).json({
+                    code: definitions_1.RESPONSE_CODE.ERROR,
+                    message: 'Ha ocurrido un error'
+                });
+            }
+        });
     }
     /**
      * Get User Leaderboard *10 highest score*
@@ -182,7 +184,7 @@ class UserController {
      * @method GET
      */
     static getAvatars(req, res) {
-        const avatarsDir = path_1.default.join(__dirname, '../../public', 'avatars');
+        const avatarsDir = path_1.default.join(__dirname, '../../../public', 'avatars');
         fs_1.default.readdir(avatarsDir, (err, files) => {
             if (err) {
                 res.status(500).json({

@@ -47,19 +47,19 @@ export const LEADERBOARD_USER_ATTRIBUTES = [
 export type difficulty = 'Fácil' | 'Moderado' | 'Difícil'
 
 export interface IUser {
-    id: string
-    username: string
-    avatar: string
-    password: string
-    score: number
-    activeQuestion: number
-    totalQuestions: number
-    successResponses: number
+  id: number;
+  username: string;
+  avatar: string;
+  password: string;
+  score: number;
+  activeQuestion: number;
+  totalQuestions: number;
+  successResponses: number;
 
-    verifyPassword: (password: string) => Promise<boolean>
+  verifyPassword: (password: string) => Promise<boolean>;
 
-    createdAt: Date
-    updatedAt: Date
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IUserRequest extends Request {

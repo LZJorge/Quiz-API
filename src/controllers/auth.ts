@@ -95,7 +95,7 @@ class AuthController {
      * @method any
      */
     public static isAuthenticated (req: Request, res: Response, next: NextFunction): void {
-        passport.authenticate('jwt', { session: false },  (err: any, user: typeof User, info: any) => {
+        passport.authenticate('jwt', { session: false },  (err: any, user: typeof User) => {
             if (err) {
                 return res.status(401).json({
                     code: RESPONSE_CODE.ERROR,
