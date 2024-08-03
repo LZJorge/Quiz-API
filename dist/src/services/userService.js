@@ -19,6 +19,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const definitions_1 = require("../definitions");
 const User_1 = __importDefault(require("../models/User"));
+const sequelize_1 = __importDefault(require("sequelize"));
 class UserService {
     /**
      * @description
@@ -194,7 +195,7 @@ class UserService {
                 }
                 yield user.update({
                     activeQuestion: questionId,
-                    totalQuestions: user.totalQuestions + 1,
+                    totalQuestions: sequelize_1.default.literal("totalQuestions + 1"),
                 });
                 return true;
             }

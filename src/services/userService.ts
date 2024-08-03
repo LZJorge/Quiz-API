@@ -218,7 +218,7 @@ class UserService {
       await user.update(
         {
           activeQuestion: questionId,
-          totalQuestions: user.totalQuestions + 1,
+          totalQuestions: Sequelize.literal("totalQuestions + 1"),
         }
       );
 
