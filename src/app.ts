@@ -38,7 +38,7 @@ class App {
 
 	private setMiddlewares(): void {
 		const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' })
-
+		this.app.set("trust proxy", 1);
 		this.app.use(morgan('common', { stream: accessLogStream }))
 		this.app.use(Express.urlencoded({
 			extended: true
