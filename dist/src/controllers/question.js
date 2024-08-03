@@ -44,7 +44,8 @@ class QuestionController {
             else {
                 const question = yield questionService_1.default.getRandomQuestion();
                 if (question) {
-                    yield userService_1.default.updateActiveQuestion(user.id, question.id);
+                    yield userService_1.default.updateActiveQuestion(user, question.id);
+                    yield userService_1.default.updateTotalQuestions(user);
                     res.status(200).json(question);
                 }
             }
@@ -88,7 +89,8 @@ class QuestionController {
                 });
                 return;
             }
-            yield userService_1.default.updateActiveQuestion(user.id, question.id);
+            yield userService_1.default.updateActiveQuestion(user, question.id);
+            yield userService_1.default.updateTotalQuestions(user);
             res.status(200).json(question);
         });
     }
@@ -125,7 +127,7 @@ class QuestionController {
                 });
                 return;
             }
-            yield userService_1.default.updateActiveQuestion(user.id, 0);
+            yield userService_1.default.updateActiveQuestion(user, 0);
             const success = answer === question.correctAnswer;
             yield userService_1.default.updateScore(user.id, success, question.points);
             if (success) {

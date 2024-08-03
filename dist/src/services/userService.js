@@ -19,7 +19,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const definitions_1 = require("../definitions");
 const User_1 = __importDefault(require("../models/User"));
-const sequelize_1 = __importDefault(require("sequelize"));
 class UserService {
     /**
      * @description
@@ -186,16 +185,31 @@ class UserService {
      * Used when user gets new question
      * It prevents some minor abuses
      */
-    updateActiveQuestion(userId, questionId) {
+    updateActiveQuestion(user, questionId) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const user = yield User_1.default.findByPk(userId);
-                if (!user) {
-                    throw new Error("Usuario no encontrado");
-                }
                 yield user.update({
                     activeQuestion: questionId,
-                    totalQuestions: sequelize_1.default.literal("totalQuestions + 1"),
+                });
+                return true;
+            }
+            catch (err) {
+                return false;
+            }
+        });
+    }
+    /**
+     * @description
+     *
+     * Updates active question
+     * Used when user gets new question
+     * It prevents some minor abuses
+     */
+    updateTotalQuestions(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield user.update({
+                    totalQuestions: user.totalQuestions + 1,
                 });
                 return true;
             }

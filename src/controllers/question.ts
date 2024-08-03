@@ -41,8 +41,9 @@ class QuestionController {
             const question = await QuestionService.getRandomQuestion()
     
             if(question) {
-                await UserService.updateActiveQuestion(user.id, question.id)
-    
+                await UserService.updateActiveQuestion(user, question.id)
+                await UserService.updateTotalQuestions(user)
+
                 res.status(200).json(question);
             }
         }
@@ -71,7 +72,7 @@ class QuestionController {
             const question = await QuestionService.getQuestionById(user.activeQuestion)
             const category = normalizeString(req.params.category)
 
-            if(question && question.Category?.slug == category) {
+            if(question && question.Category?.slug == category) {                
                 res.status(200).json(question)
                 return
             }
@@ -89,8 +90,9 @@ class QuestionController {
             return
         }
 
-        await UserService.updateActiveQuestion(user.id, question.id)
-
+        await UserService.updateActiveQuestion(user, question.id)
+        await UserService.updateTotalQuestions(user);
+        
         res.status(200).json(question)
     }
 
@@ -130,7 +132,7 @@ class QuestionController {
             return
         }
 
-        await UserService.updateActiveQuestion(user.id, 0)
+        await UserService.updateActiveQuestion(user, 0)
         const success: boolean = answer === question.correctAnswer
 
         await UserService.updateScore(user.id, success, question.points)

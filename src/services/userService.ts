@@ -205,22 +205,34 @@ class UserService {
    * It prevents some minor abuses
    */
   public async updateActiveQuestion(
-    userId: number,
+    user: User,
     questionId: number
   ): Promise<boolean> {
     try {
-      const user = await User.findByPk(userId);
+      await user.update({
+        activeQuestion: questionId,
+      });
 
-      if (!user) {
-        throw new Error("Usuario no encontrado");
-      }
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
 
-      await user.update(
-        {
-          activeQuestion: questionId,
-          totalQuestions: Sequelize.literal("totalQuestions + 1"),
-        }
-      );
+  /**
+   * @description
+   *
+   * Updates active question
+   * Used when user gets new question
+   * It prevents some minor abuses
+   */
+  public async updateTotalQuestions(
+    user: User
+  ): Promise<boolean> {
+    try {
+      await user.update({
+        totalQuestions: user.totalQuestions + 1,
+      });
 
       return true;
     } catch (err) {
