@@ -7,8 +7,6 @@
 import Express from 'express'
 import { config } from 'dotenv'
 import cors from 'cors'
-import morgan from 'morgan'
-import fs from 'fs'
 import path from 'path'
 import Router from './routes/router'
 import sequelize from './config/db'
@@ -37,9 +35,7 @@ class App {
 	}
 
 	private setMiddlewares(): void {
-		const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' })
 		this.app.set("trust proxy", 1);
-		this.app.use(morgan('common', { stream: accessLogStream }))
 		this.app.use(Express.urlencoded({
 			extended: true
 		}))

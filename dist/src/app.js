@@ -20,8 +20,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = require("dotenv");
 const cors_1 = __importDefault(require("cors"));
-const morgan_1 = __importDefault(require("morgan"));
-const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const router_1 = __importDefault(require("./routes/router"));
 const db_1 = __importDefault(require("./config/db"));
@@ -41,9 +39,7 @@ class App {
         this.setRoutes();
     }
     setMiddlewares() {
-        const accessLogStream = fs_1.default.createWriteStream('./access.log', { flags: 'a' });
         this.app.set("trust proxy", 1);
-        this.app.use((0, morgan_1.default)('common', { stream: accessLogStream }));
         this.app.use(express_1.default.urlencoded({
             extended: true
         }));
