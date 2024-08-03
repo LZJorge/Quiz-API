@@ -8,17 +8,18 @@
     },
     {
       "src": "public/**",
-      "use": "@vercel/static"
+      "use": "@vercel/static",
+      "config": { "includeFiles": ["public/**"] }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "dest": "dist/src/index.js"
     },
     {
       "src": "/(.+)",
-      "dest": "public/**"
+      "dest": "public/$1"
     }
   ],
   "outputDirectory": "public"
