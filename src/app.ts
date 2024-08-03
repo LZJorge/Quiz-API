@@ -16,6 +16,8 @@ import session from 'express-session'
 import sessionConfig from './config/session'
 import cookieParser from 'cookie-parser'
 import passport from './config/passport'
+import 'pg'
+import 'pg-hstore'
 
 config()
 

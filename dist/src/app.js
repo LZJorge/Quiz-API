@@ -29,6 +29,8 @@ const express_session_1 = __importDefault(require("express-session"));
 const session_1 = __importDefault(require("./config/session"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const passport_1 = __importDefault(require("./config/passport"));
+require("pg");
+require("pg-hstore");
 (0, dotenv_1.config)();
 class App {
     constructor() {
