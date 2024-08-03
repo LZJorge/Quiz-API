@@ -13,12 +13,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "dist/src/index.js"
     },
     {
-      "src": "/public/(.+)",
-      "dest": "public/$1"
+      "src": "/(.+)",
+      "dest": "public/**"
     }
   ],
   "outputDirectory": "public"
