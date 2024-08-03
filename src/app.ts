@@ -12,7 +12,7 @@ import fs from 'fs'
 import path from 'path'
 import Router from './routes/router'
 import sequelize from './config/db'
-import session from 'express-session'
+import cookieSession from 'cookie-session'
 import sessionConfig from './config/session'
 import cookieParser from 'cookie-parser'
 import passport from './config/passport'
@@ -48,7 +48,7 @@ class App {
 
 		this.app.use(Express.static(path.join(__dirname + '/public')))
 
-		this.app.use(session(sessionConfig))
+		this.app.use(cookieSession(sessionConfig));
 
 		this.app.use(
 			cors({

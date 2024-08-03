@@ -25,7 +25,7 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const router_1 = __importDefault(require("./routes/router"));
 const db_1 = __importDefault(require("./config/db"));
-const express_session_1 = __importDefault(require("express-session"));
+const cookie_session_1 = __importDefault(require("cookie-session"));
 const session_1 = __importDefault(require("./config/session"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const passport_1 = __importDefault(require("./config/passport"));
@@ -50,7 +50,7 @@ class App {
         this.app.use(express_1.default.json());
         this.app.use((0, cookie_parser_1.default)());
         this.app.use(express_1.default.static(path_1.default.join(__dirname + '/public')));
-        this.app.use((0, express_session_1.default)(session_1.default));
+        this.app.use((0, cookie_session_1.default)(session_1.default));
         this.app.use((0, cors_1.default)({
             origin: [process.env.APP_DOMAIN],
             methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
