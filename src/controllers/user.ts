@@ -10,7 +10,6 @@ import UserService from '../services/userService'
 import { RESPONSE_CODE } from '../definitions'
 import path from 'path'
 import fs from 'fs'
-import userService from '../services/userService';
 
 class UserController {
 
@@ -96,11 +95,16 @@ class UserController {
 		const { userID } = req.body
 		const { id } = req.user
 
-		try {
-			if (id && id === userID) {
-				await UserService.deleteUser
-		
-				req.session.destroy(() => {
+        try {
+            if (id && id === userID) {
+                await UserService.deleteUser(userID)
+
+				if (!req.session) {
+					res.status(500).json({ message: 'La sesión no está inicializada' });
+					return;
+				}
+
+                req.session.destroy(() => {
 					res.status(200).json({
 						code: RESPONSE_CODE.SUCCESS,
 						message: 'El usuario ha sido eliminado'
@@ -127,14 +131,14 @@ class UserController {
 	 */
 	public static async getCurrentUser(req: IUserRequest, res: Response): Promise<void> {
 		try {
-			const user = await userService.getUser(req.user.id);
+			const user = await UserService.getUser(req.user.id)
 
 			if (!user) {
 				res.status(400).json({
 					code: RESPONSE_CODE.ERROR,
-					message: "Error al obtener el usuario",
-				});
-				return;
+					message: 'Error al obtener el usuario',
+				})
+				return
 			}
 
 			res.status(200).json({
@@ -173,7 +177,7 @@ class UserController {
 	 * @method GET
 	 */
 	public static getAvatars (req: Request, res: Response): void {
-		const avatarsDir = path.join(__dirname, '../../../public', 'avatars')
+		const avatarsDir = path.join(process.cwd(), 'public', 'avatars')
 
 		fs.readdir(avatarsDir, (err, files) => {
 			if (err) {

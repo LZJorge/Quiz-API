@@ -136,3 +136,7 @@ build/
 
 # Rest client file
 request.http
+
+# build
+dist/
+build/

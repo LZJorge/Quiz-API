@@ -6,11 +6,6 @@
 
 import { Request } from 'express'
 import Question from '../models/Question'
-import { config } from 'dotenv'
-
-config()
-
-export const DB_STORAGE = process.env.NODE_ENV === 'test' ? ':memory:' : process.env.DB_URL
 
 export const USER_DEFAULT_AVATAR = '/avatars/avatar-00.svg'
 

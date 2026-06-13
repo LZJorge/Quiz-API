@@ -35,32 +35,25 @@ class App {
 	}
 
 	private setMiddlewares(): void {
-		this.app.set("trust proxy", 1);
+		this.app.set('trust proxy', 1)
 		this.app.use(Express.urlencoded({
 			extended: true
 		}))
 		this.app.use(Express.json())
 		this.app.use(cookieParser())
 
-		this.app.use(Express.static(path.join(__dirname, '../../public')))
-
-		this.app.use(cookieSession(sessionConfig));
+		this.app.use(cookieSession(sessionConfig))
 
 		this.app.use(
 			cors({
 				origin: [`${process.env.APP_DOMAIN}`],
-				methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
+				methods: ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
 				credentials: true,
-				allowedHeaders: ["Content-Type", "Accept", "Authorization"],
+				allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
 			})
-		);
+		)
 
-		this.app.use(function (req, res, next) {
-			res.header("Access-Control-Allow-Origin", `${process.env.APP_DOMAIN}`);
-			res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, OPTIONS, HEAD, DELETE");
-			res.header("Access-Control-Allow-Headers", "X-Requested-With");
-			next();
-		});
+		this.app.use(Express.static(path.join(process.cwd(), 'public')))
 		
 		this.app.use(passport.initialize())
 		this.app.use(passport.session())
@@ -84,7 +77,9 @@ class App {
 	}
 
 	public async stopServer(): Promise<void> {
-		await this.server.close()
+		if (this.server) {
+			await this.server.close()
+		}
 	}
 
 	public getApp(): Express.Application {

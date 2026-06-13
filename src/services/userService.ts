@@ -4,15 +4,12 @@
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
 
-import { totalmem } from 'os';
-import { 
-    IUser, 
-    UpdatedScore, 
-    LEADERBOARD_SIZE, 
-    LEADERBOARD_USER_ATTRIBUTES 
+import {
+    UpdatedScore,
+    LEADERBOARD_SIZE,
+    LEADERBOARD_USER_ATTRIBUTES
 } from '../definitions'
 import User from '../models/User'
-import Sequelize from 'sequelize'
 
 class UserService {
   /**
@@ -28,13 +25,13 @@ class UserService {
       const user = User.build({
         username,
         password,
-      });
+      })
 
-      await user.save();
+      await user.save()
 
-      return true;
+      return true
     } catch (error) {
-      return false;
+      return false
     }
   }
 
@@ -46,15 +43,15 @@ class UserService {
    */
   public async getUser(id: number): Promise<User | undefined> {
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id)
 
       if (!user) {
-        throw new Error("Usuario no encontrado");
+        throw new Error('Usuario no encontrado')
       }
 
-      return user;
+      return user
     } catch (error) {
-      return undefined;
+      return undefined
     }
   }
 
@@ -70,15 +67,15 @@ class UserService {
         where: {
           username: username,
         },
-      });
+      })
 
       if (!user) {
-        throw new Error("Usuario no encontrado");
+        throw new Error('Usuario no encontrado')
       }
 
-      return user;
+      return user
     } catch (error) {
-      return undefined;
+      return undefined
     }
   }
 
@@ -91,17 +88,17 @@ class UserService {
     id: string,
     newPassword: string
   ): Promise<boolean> {
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id)
 
     if (!user) {
-      throw new Error("Ha ocurrido un error al actualizar la contraseña");
+      throw new Error('Ha ocurrido un error al actualizar la contraseña')
     }
 
     await user.update({
       password: newPassword,
-    });
+    })
 
-    return true;
+    return true
   }
 
   /**
@@ -113,17 +110,17 @@ class UserService {
     id: string,
     newAvatar: string
   ): Promise<boolean> {
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id)
 
     if (!user) {
-      throw new Error("Ha ocurrido un error al actualizar el avatar");
+      throw new Error('Ha ocurrido un error al actualizar el avatar')
     }
 
     await user.update({
       avatar: newAvatar,
-    });
+    })
 
-    return true;
+    return true
   }
 
   /**
@@ -134,18 +131,18 @@ class UserService {
   public async getLeaderboard(): Promise<User[] | undefined> {
     try {
       const leaderboard = await User.findAll({
-        order: [["score", "DESC"]],
+        order: [['score', 'DESC']],
         limit: LEADERBOARD_SIZE,
         attributes: LEADERBOARD_USER_ATTRIBUTES,
-      });
+      })
 
       if (!leaderboard) {
-        throw new Error("No se puedo obtener la tabla");
+        throw new Error('No se puedo obtener la tabla')
       }
 
-      return leaderboard;
+      return leaderboard
     } catch (error) {
-      return undefined;
+      return undefined
     }
   }
 
@@ -164,19 +161,19 @@ class UserService {
       where: {
         id: userId,
       },
-    });
+    })
 
     if (!user) {
-      throw new Error("Usuario no encontrado");
+      throw new Error('Usuario no encontrado')
     }
 
     const updatedScore = success
       ? user.score + points
-      : Math.max(user.score - 10, 0);
+      : Math.max(user.score - 10, 0)
 
     const updatedSuccessResponses = success
       ? user.successResponses + 1
-      : user.successResponses;
+      : user.successResponses
 
     await User.update(
       {
@@ -189,12 +186,12 @@ class UserService {
           id: userId,
         },
       }
-    );
+    )
 
     return {
       updatedScore,
       updatedSuccessResponses,
-    };
+    }
   }
 
   /**
@@ -211,11 +208,11 @@ class UserService {
     try {
       await user.update({
         activeQuestion: questionId,
-      });
+      })
 
-      return true;
+      return true
     } catch (err) {
-      return false;
+      return false
     }
   }
 
@@ -232,11 +229,11 @@ class UserService {
     try {
       await user.update({
         totalQuestions: user.totalQuestions + 1,
-      });
+      })
 
-      return true;
+      return true
     } catch (err) {
-      return false;
+      return false
     }
   }
 
@@ -251,15 +248,15 @@ class UserService {
         where: {
           id: userID,
         },
-      });
+      })
 
       if (deletedUsers === 0) {
-        throw new Error("No se pudo eliminar al usuario");
+        throw new Error('No se pudo eliminar al usuario')
       }
 
-      return true;
+      return true
     } catch (err) {
-      return false;
+      return false
     }
   }
 }

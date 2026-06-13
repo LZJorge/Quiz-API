@@ -11,9 +11,9 @@ import userService from '../services/userService'
 import { RESPONSE_CODE } from '../definitions'
 import { compare } from 'bcrypt'
 import User from '../models/User'
-import { config } from "dotenv";
+import { config } from 'dotenv'
 
-config();
+config()
 
 class AuthController {
 
@@ -24,23 +24,23 @@ class AuthController {
      */
     public static async authenticateUser (req: Request, res: Response): Promise<Response> {
         try {
-            const { username, password } = req.body;
-            const user = await userService.getUserByUsername(username);
+            const { username, password } = req.body
+            const user = await userService.getUserByUsername(username)
 
             if (!user) {
                 return res.status(401).json({
                   code: RESPONSE_CODE.ERROR,
-                  message: "Usuario o contraseña incorrectos",
-                });
+                  message: 'Usuario o contraseña incorrectos',
+                })
             }
 
-            const passwordMatch = await compare(password, user.password);
+            const passwordMatch = await compare(password, user.password)
 
             if (!passwordMatch) {
                 return res.status(401).json({
                   code: RESPONSE_CODE.ERROR,
-                  message: "Usuario o contraseña incorrectos",
-                });
+                  message: 'Usuario o contraseña incorrectos',
+                })
             }
 
             const token = jwt.sign(
@@ -50,21 +50,21 @@ class AuthController {
               },
               `${process.env.SECRET_KEY}`,
               {
-                expiresIn: "24h",
-                algorithm: "HS256",
+                expiresIn: '24h',
+                algorithm: 'HS256',
               }
-            );
+            )
             
             return res.status(200).json({
               code: RESPONSE_CODE.SUCCESS,
-              message: "Se ha iniciado la sesión",
+              message: 'Se ha iniciado la sesión',
               token
-            });
+            })
         } catch (error) {
-            console.log(error);
+            console.log(error)
             return res
               .status(500)
-              .json({ code: RESPONSE_CODE.ERROR, message: "Error al iniciar la sesión", error });
+              .json({ code: RESPONSE_CODE.ERROR, message: 'Error al iniciar la sesión', error })
         }
     }
 
@@ -111,7 +111,7 @@ class AuthController {
 
             req.user = user
 
-            return next();
+            return next()
         })(req, res, next)
     }
 }

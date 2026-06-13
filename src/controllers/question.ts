@@ -3,13 +3,13 @@
  *
  * @author Jorge L. Landaeta <dev.jorge2003@gmail.com>
  */
-import { NextFunction, Response } from 'express'
+import { Response } from 'express'
 import { IUserRequest } from '../definitions'
 import UserService from '../services/userService'
 import QuestionService from '../services/questionService'
 import { QUESTION_CODE, RESPONSE_CODE } from '../definitions'
 import { normalizeString } from '../helpers/normalizeHelper'
-import userService from '../services/userService';
+import userService from '../services/userService'
 
 class QuestionController {
 
@@ -18,15 +18,15 @@ class QuestionController {
      * @url '/question'
      * @method GET
      */
-    public static async getRandomQuestion(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
-        const user = await userService.getUser(req.user.id);
+    public static async getRandomQuestion(req: IUserRequest, res: Response): Promise<void> {
+        const user = await userService.getUser(req.user.id)
 
         if (!user) {
             res.status(400).json({
                 code: RESPONSE_CODE.ERROR,
-                message: "Error al obtener el usuario",
-            });
-            return;
+                message: 'Error al obtener el usuario',
+            })
+            return
         }
         
         /**
@@ -36,7 +36,7 @@ class QuestionController {
         if(user.activeQuestion != 0) {
             const question = await QuestionService.getQuestionById(user.activeQuestion)
 
-            res.status(200).json(question);
+            res.status(200).json(question)
         } else {
             const question = await QuestionService.getRandomQuestion()
     
@@ -44,7 +44,7 @@ class QuestionController {
                 await UserService.updateActiveQuestion(user, question.id)
                 await UserService.updateTotalQuestions(user)
 
-                res.status(200).json(question);
+                res.status(200).json(question)
             }
         }
     }
@@ -54,7 +54,7 @@ class QuestionController {
      * @url '/question/:category'
      * @method GET
      */
-    public static async getQuestionByCategory(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
+    public static async getQuestionByCategory(req: IUserRequest, res: Response): Promise<void> {
         const user = await userService.getUser(req.user.id)
 
         if(!user) {
@@ -91,7 +91,7 @@ class QuestionController {
         }
 
         await UserService.updateActiveQuestion(user, question.id)
-        await UserService.updateTotalQuestions(user);
+        await UserService.updateTotalQuestions(user)
         
         res.status(200).json(question)
     }
@@ -103,16 +103,16 @@ class QuestionController {
      * @method PUT
      * @method PATCH
      */
-    public static async sendAnswer(req: IUserRequest, res: Response, next: NextFunction): Promise<void> {
+    public static async sendAnswer(req: IUserRequest, res: Response): Promise<void> {
         const { answer } = req.body
-        const user = await userService.getUser(req.user.id);
+        const user = await userService.getUser(req.user.id)
 
         if (!user) {
             res.status(400).json({
                 code: RESPONSE_CODE.ERROR,
-                message: "Error al obtener el usuario",
-            });
-            return;
+                message: 'Error al obtener el usuario',
+            })
+            return
         }
 
         if(user.activeQuestion == 0) {
