@@ -22,7 +22,7 @@
   "author": "Jorge Landaeta <dev.jorge2003@gmail.com>",
   "license": "GPL-3.0-only",
   "engines": {
-    "node": ">=16.17.1",
+    "node": ">=16.17.1 < 20.0.0",
     "npm": ">=9.5.1"
   },
   "devDependencies": {
